@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.auth.VerifyAddress"></activity>
+        <activity android:name=".ui.auth.VerifyPersonalDetails" />
+        <activity android:name=".ui.auth.VerifyOtp" />
+        <activity android:name=".ui.auth.VerifyPhone" />
         <activity
             android:name=".ui.onboarding.Onboarding"
             android:label="@string/title_activity_onboarding"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
