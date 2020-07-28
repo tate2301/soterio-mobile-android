@@ -1,4 +1,4 @@
-package zw.co.guava.soterio.ui;
+package zw.co.guava.soterio.ui.onboarding;
 
 import android.content.Context;
 import android.os.Build;

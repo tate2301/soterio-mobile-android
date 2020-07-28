@@ -1,8 +1,7 @@
-package zw.co.guava.soterio.ui
+package zw.co.guava.soterio.ui.onboarding
 
 import android.content.Intent
 import android.os.Build
-import android.os.Build.VERSION_CODES.O
 import android.os.Bundle
 import android.text.Html
 import android.widget.Button
@@ -11,8 +10,6 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import kotlinx.android.synthetic.main.activity_onboarding.*
 import zw.co.guava.soterio.R
 
 class Onboarding : AppCompatActivity() {
