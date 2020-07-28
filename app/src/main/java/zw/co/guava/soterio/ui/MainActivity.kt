@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
                     val intent = Intent(baseContext, Onboarding::class.java)
                     startActivity(intent)
+                    finish()
                 }catch (e: Exception)
                 {
                     e.printStackTrace()
