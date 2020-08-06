@@ -23,9 +23,11 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:strokeWidth="1dp"
                 app:strokeColor="@color/faint2"
-                app:cardCornerRadius="5dp"
+                app:strokeWidth="1dp"
+                app:cardCornerRadius="4dp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:checkable="false">
@@ -82,7 +84,9 @@
                 android:layout_width="match_parent"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/faint2"
-                app:cardCornerRadius="5dp"
+                app:cardCornerRadius="4dp"
+                android:elevation="0dp"
+                app:cardElevation="0dp"
                 android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:focusable="true"
@@ -104,13 +108,6 @@
                             android:text="Upload my encounter log"
                             android:textColor="@color/darkText"
                             android:textSize="18sp"/>
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="6dp"
-                            android:src="@drawable/icon_alert"/>
 
                     </RelativeLayout>
 

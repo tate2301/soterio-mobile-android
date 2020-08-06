@@ -61,7 +61,7 @@
             android:id="@+id/verifyButton"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Verify"
             android:textSize="14sp"

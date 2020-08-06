@@ -70,7 +70,7 @@
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:id="@+id/getStartedButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/custom_button"
                 android:text="Approve permissions"
                 android:textColor="@color/buttonColor"
