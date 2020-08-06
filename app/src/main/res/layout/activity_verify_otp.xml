@@ -9,7 +9,7 @@
     android:paddingEnd="16dp"
     android:paddingTop="12dp"
     android:paddingBottom="16dp"
-    tools:context=".ui.auth.VerifyOtp">
+    tools:context=".ui.onboarding.auth.VerifyOtp">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

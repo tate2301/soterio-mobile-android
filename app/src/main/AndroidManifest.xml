@@ -13,15 +13,15 @@
         <activity android:name=".ui.get_and_upload_info.testing_centers" />
         <activity android:name=".ui.get_and_upload_info.hospitals" />
         <activity android:name=".ui.main_apk.button_navigation_menu" />
-        <activity android:name=".ui.main_apk.landing_page" />
-        <activity android:name=".ui.permissions.get_started" />
-        <activity android:name=".ui.permissions.enable_notifications" />
-        <activity android:name=".ui.permissions.privacy_policy" />
-        <activity android:name=".ui.permissions.enable_bluetooth" />
-        <activity android:name=".ui.auth.VerifyAddress" />
-        <activity android:name=".ui.auth.VerifyPersonalDetails" />
-        <activity android:name=".ui.auth.VerifyOtp" />
-        <activity android:name=".ui.auth.VerifyPhone" />
+        <activity android:name=".ui.main_apk.MainFragment" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.get_started" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_notifications" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.privacy_policy" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_bluetooth" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyAddress" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyPersonalDetails" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyOtp" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyPhone" />
         <activity
             android:name=".ui.onboarding.Onboarding"
             android:label="@string/title_activity_onboarding"

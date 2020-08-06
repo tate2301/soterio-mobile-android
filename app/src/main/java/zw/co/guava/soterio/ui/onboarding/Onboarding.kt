@@ -10,9 +10,8 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
-import kotlinx.android.synthetic.main.activity_onboarding.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.auth.VerifyOtp
+import zw.co.guava.soterio.ui.onboarding.auth.VerifyOtp
 
 class Onboarding : AppCompatActivity() {
 
