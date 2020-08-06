@@ -1,4 +1,4 @@
-package zw.co.guava.soterio.ui.permissions
+package zw.co.guava.soterio.ui.onboarding.permissions
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

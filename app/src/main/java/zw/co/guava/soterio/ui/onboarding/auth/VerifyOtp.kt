@@ -1,4 +1,4 @@
-package zw.co.guava.soterio.ui.auth
+package zw.co.guava.soterio.ui.onboarding.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

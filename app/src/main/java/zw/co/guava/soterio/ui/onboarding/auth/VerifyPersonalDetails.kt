@@ -1,10 +1,9 @@
-package zw.co.guava.soterio.ui.auth
+package zw.co.guava.soterio.ui.onboarding.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_verify_personal_details.*
-import kotlinx.android.synthetic.main.activity_verify_phone.*
 import zw.co.guava.soterio.R
 
 class VerifyPersonalDetails : AppCompatActivity() {

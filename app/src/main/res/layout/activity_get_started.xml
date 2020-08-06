@@ -8,7 +8,7 @@
     android:paddingEnd="16dp"
     android:paddingTop="12dp"
     android:paddingBottom="16dp"
-    tools:context=".ui.permissions.get_started">
+    tools:context=".ui.onboarding.permissions.get_started">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
