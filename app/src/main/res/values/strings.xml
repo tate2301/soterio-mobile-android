@@ -17,4 +17,8 @@
         \n\nWe are committed to protect your privacy while combating the corona virus.</string>
     <string name="notifications">We need you to allow us to send you notifications so as for Soterio to receive and display notifications from the Ministry of Health of Zimbabwe.</string>
     <string name="registrationDone">Your phone will be securely and anonymously sharing a unique with other phones around you. This will be a key in alerting you if you have been exposed to a COVID-19 patient.</string>
+    <string name="start_upload">Start upload</string>
+    <string name="health_authorization_notify">Authorization by a Health official will be required.</string>
+    <string name="thank_you_for_helping_in_the_fight_against_corona_virus">Thank you for helping in the fight against corona virus.</string>
+    <string name="dismiss">Dismiss</string>
 </resources>

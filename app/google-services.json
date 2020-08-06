@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "956939848320",
+    "firebase_url": "https://soterio-d04a8.firebaseio.com",
+    "project_id": "soterio-d04a8",
+    "storage_bucket": "soterio-d04a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956939848320:android:8e86f96a31a2af56d9b465",
+        "android_client_info": {
+          "package_name": "zw.co.guava.soterio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956939848320-k2o1i8fsrm6illenov4nk4h1ruc0l6r9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOmEeSsGxghXvuu5N6RdDFR2734QdQNFE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956939848320-k2o1i8fsrm6illenov4nk4h1ruc0l6r9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

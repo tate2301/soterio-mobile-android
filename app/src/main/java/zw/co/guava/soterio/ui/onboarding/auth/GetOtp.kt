@@ -3,17 +3,20 @@ package zw.co.guava.soterio.ui.onboarding.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_verify_personal_details.*
+import android.widget.Button
 import zw.co.guava.soterio.R
 
-class VerifyPersonalDetails : AppCompatActivity() {
+class GetOtp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify_personal_details)
+        setContentView(R.layout.activity_get_otp)
 
-        nextButton.setOnClickListener {
-            val intent = Intent(baseContext, VerifyAddress::class.java)
+        val getOtpBtn = findViewById<Button>(R.id.getOtpButton)
+
+        getOtpBtn.setOnClickListener {
+            val intent = Intent(baseContext, VerifyPhone::class.java)
             startActivity(intent)
+
         }
     }
 }

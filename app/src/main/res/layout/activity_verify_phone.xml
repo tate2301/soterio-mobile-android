@@ -44,18 +44,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="60dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <com.goodiebag.pinview.Pinview
-            android:id="@+id/codeTextField"
+
+        <com.chaos.view.PinView
+            android:id="@+id/otpInput"
+            style="@style/PinWidget.PinView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:pinWidth="40dp"
-            app:pinHeight="40dp"
-            app:pinLength="5"
-            app:forceKeyboard="false"
-            app:textSize="24sp"
-            app:inputType="number" />
+            android:cursorVisible="true"
+            android:inputType="number"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            app:cursorWidth="2dp"
+            app:hideLineWhenFilled="true"
+            app:itemCount="6"
+            app:itemHeight="48dp"
+            app:itemRadius="4dp"
+            app:itemSpacing="8dp"
+            app:itemWidth="48dp"
+            app:lineColor="@color/faint"
+            app:lineWidth="2dp"
+            app:viewType="rectangle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/verifyButton"
@@ -72,7 +84,10 @@
             android:layout_gravity="center"
             />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textAllCaps="false"
+            android:textColor="@color/text"
             android:id="@+id/resendCodeLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

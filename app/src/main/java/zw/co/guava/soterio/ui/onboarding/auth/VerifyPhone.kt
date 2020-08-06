@@ -12,7 +12,7 @@ class VerifyPhone : AppCompatActivity() {
         setContentView(R.layout.activity_verify_phone)
 
         verifyButton.setOnClickListener {
-            val intent = Intent(baseContext, VerifyPersonalDetails::class.java)
+            val intent = Intent(baseContext, VerifyAddress::class.java)
             startActivity(intent)
 
         }
