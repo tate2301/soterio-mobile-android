@@ -10,7 +10,9 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import kotlinx.android.synthetic.main.activity_onboarding.*
 import zw.co.guava.soterio.R
+import zw.co.guava.soterio.ui.auth.VerifyOtp
 
 class Onboarding : AppCompatActivity() {
 
@@ -35,7 +37,7 @@ class Onboarding : AppCompatActivity() {
         val getStartedBtn = findViewById<Button>(R.id.getStartedBtn)
 
         getStartedBtn.setOnClickListener {
-            val intent = Intent(baseContext, Onboarding::class.java)
+            val intent = Intent(baseContext, VerifyOtp::class.java)
             startActivity(intent)
 
         }
