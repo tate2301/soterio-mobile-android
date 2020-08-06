@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.auth.VerifyAddress"></activity>
+        <activity android:name=".ui.get_and_upload_info.feed"></activity>
+        <activity android:name=".ui.get_and_upload_info.testing_centers" />
+        <activity android:name=".ui.get_and_upload_info.hospitals" />
+        <activity android:name=".ui.main_apk.button_navigation_menu" />
+        <activity android:name=".ui.main_apk.landing_page" />
+        <activity android:name=".ui.permissions.get_started" />
+        <activity android:name=".ui.permissions.enable_notifications" />
+        <activity android:name=".ui.permissions.privacy_policy" />
+        <activity android:name=".ui.permissions.enable_bluetooth" />
+        <activity android:name=".ui.auth.VerifyAddress" />
         <activity android:name=".ui.auth.VerifyPersonalDetails" />
         <activity android:name=".ui.auth.VerifyOtp" />
         <activity android:name=".ui.auth.VerifyPhone" />

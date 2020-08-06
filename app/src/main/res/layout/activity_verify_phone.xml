@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp"
+    android:paddingBottom="16dp"
     tools:context=".ui.auth.VerifyPhone">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:text="Verify your phone number"
+            android:textAlignment="center"
+            android:textSize="32sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp"
+            android:text="Enter the code you received here"
+            android:layout_gravity="center"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <com.goodiebag.pinview.Pinview
+            android:id="@+id/codeTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pinWidth="40dp"
+            app:pinHeight="40dp"
+            app:pinLength="5"
+            app:forceKeyboard="false"
+            app:textSize="24sp"
+            app:inputType="number" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/verifyButton"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="Verify"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:background="@drawable/custom_button"
+            android:textColor="@color/dotBaseColor"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/resendCodeLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Resend new code."
+            android:layout_gravity="center"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/linearLayout3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="powered by"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chinhoyi University of Technology"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/darkText"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

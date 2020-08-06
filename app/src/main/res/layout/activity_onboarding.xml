@@ -47,38 +47,41 @@
           android:layout_height="wrap_content"
           android:paddingBottom="50dp">
 
-         <Button
+         <com.google.android.material.button.MaterialButton
              android:id="@+id/getStartedBtn"
+             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"
+             android:layout_height="60dp"
              android:background="@drawable/custom_button"
              android:text="Get started"
+             android:textSize="14sp"
              android:textColor="@color/buttonColor"
+             android:backgroundTint="@color/colorPrimary"
              android:textAllCaps="false" />
       </LinearLayout>
 
       <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       app:layout_constraintBottom_toBottomOf="parent">
+
+      <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="vertical"
-          app:layout_constraintBottom_toBottomOf="parent">
+          android:text="powered by"
+          android:textAlignment="center" />
 
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="powered by"
-             android:textAlignment="center" />
-
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Chinhoyi University of Technology"
-             android:textAlignment="center"
-             android:textAllCaps="true"
-             android:textColor="@color/darkText"
-             android:textSize="12sp"
-             android:textStyle="bold" />
-      </LinearLayout>
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Chinhoyi University of Technology"
+          android:textAlignment="center"
+          android:textAllCaps="true"
+          android:textColor="@color/darkText"
+          android:textSize="12sp"
+          android:textStyle="bold" />
+   </LinearLayout>
 
    </LinearLayout>
 

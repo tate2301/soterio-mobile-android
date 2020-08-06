@@ -10,4 +10,11 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_onboarding">onboarding</string>
+    <string name="bluetoothText">This application uses low energy bluetooth to log encounters between phones with the application installed. \n\nThis application also requires location access inorder to warn you of your interactions with COVID-19 redzones</string>
+    <string name="privacy_policy"><b>Data collection</b> \n\nYour phone will be sharing a unique number with other phones that you come nearby. This number contains no personal identifiable information. At no point is your personal information ever shared with a third party.
+        \n\n<b>Ensuring privacy</b> \n\nPhones will never share personal identifiable information. Your name and ID number are stored securely on your phone only. Only the Ministry of Health is able to decode the unique number your phone has received to a person.
+        \n\n<b>Contact tracing and notifications</b> \n\nExposure notifications sent will not contain the identities of the patients whom you might have been in contact with. Nonetheless the notification will tell you the approximate time of the encounter and its duration.
+        \n\nWe are committed to protect your privacy while combating the corona virus.</string>
+    <string name="notifications">We need you to allow us to send you notifications so as for Soterio to receive and display notifications from the Ministry of Health of Zimbabwe.</string>
+    <string name="registrationDone">Your phone will be securely and anonymously sharing a unique with other phones around you. This will be a key in alerting you if you have been exposed to a COVID-19 patient.</string>
 </resources>
