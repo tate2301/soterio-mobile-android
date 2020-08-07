@@ -6,7 +6,7 @@ import android.os.Bundle
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.ui.onboarding.Onboarding
 
-class MainActivity : AppCompatActivity() {
+class SplashPage : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
