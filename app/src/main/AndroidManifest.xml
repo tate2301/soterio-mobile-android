@@ -12,8 +12,7 @@
         <activity android:name=".ui.get_and_upload_info.feed"></activity>
         <activity android:name=".ui.get_and_upload_info.testing_centers" />
         <activity android:name=".ui.get_and_upload_info.hospitals" />
-        <activity android:name=".ui.main_apk.button_navigation_menu" />
-        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.onboarding.auth.VerifyPhone" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.get_started" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_notifications" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.privacy_policy" />
@@ -25,7 +24,7 @@
             android:name=".ui.onboarding.Onboarding"
             android:label="@string/title_activity_onboarding"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.onboarding.auth.VerifyPhone">
+        <activity android:name=".ui.SplasActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
