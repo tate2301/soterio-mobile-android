@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import zw.co.guava.soterio.R
 
-class MainFragment : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     lateinit var lottieViewSonar: LottieAnimationView;
 

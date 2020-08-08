@@ -19,7 +19,7 @@
         <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_bluetooth" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyAddress" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.GetOtp" />
-        <activity android:name="zw.co.guava.soterio.ui.main_apk.MainFragment" />
+        <activity android:name="zw.co.guava.soterio.ui.main_apk.MainActivity" />
         <activity
             android:name=".ui.onboarding.Onboarding"
             android:label="@string/title_activity_onboarding"

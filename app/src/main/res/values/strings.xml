@@ -21,4 +21,12 @@
     <string name="health_authorization_notify">Authorization by a Health official will be required.</string>
     <string name="thank_you_for_helping_in_the_fight_against_corona_virus">Thank you for helping in the fight against corona virus.</string>
     <string name="dismiss">Dismiss</string>
+    <string name="get_otp_change_number">Change number</string>
+    <string name="proceed">Proceed</string>
+    <string name="cancel">Cancel</string>
+    <string name="get_otp_title">Verify phone number</string>
+    <string name="get_otp_supporting_text">We will send a verification code to this phone number: </string>
+    <string name="back_to_prev_screen">This will take you back to the previous screen</string>
+    <string name="phone_number">PHONE_NUMBER</string>
+    <string name="go_back">Go back</string>
 </resources>
