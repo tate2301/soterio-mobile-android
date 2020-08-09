@@ -120,9 +120,15 @@ class VerifyPhone : AppCompatActivity() {
     private fun acknowledgeAuthenticationWithServer(currentUser: FirebaseUser?) {
         val requestQueue = Volley.newRequestQueue(this)
 
+<<<<<<< HEAD
         // 
         val tokensRequest = StringRequest(Request.Method.GET,
             getString(R.string.server_addr) + getString(R.string.route_tokens),
+=======
+        // Tokens request from server
+        val tokensRequest = StringRequest(Request.Method.GET,
+            getString(R.string.server_addr) + getString(R.string.route_tokens) + "?uid=${mAuth.currentUser!!.uid}",
+>>>>>>> 2d42dd16206e1d1f2cf559e2c6aea9415cb10b94
             Response.Listener {
                 Log.d("ServerAccess", "OnTokenFetchSuccess")
 

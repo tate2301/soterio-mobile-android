@@ -14,7 +14,8 @@
         android:indeterminate="true"
         app:mpb_progressStyle="horizontal"
         android:visibility="gone"
-        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal" />
+        style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+        tools:ignore="MissingClass" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
