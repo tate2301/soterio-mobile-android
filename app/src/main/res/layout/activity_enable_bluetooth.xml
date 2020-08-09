@@ -9,7 +9,7 @@
     android:paddingTop="12dp"
     android:paddingBottom="16dp"
     android:orientation="vertical"
-    tools:context=".ui.onboarding.permissions.enable_bluetooth">
+    tools:context=".ui.onboarding.permissions.EnableBluetooth">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

@@ -11,10 +11,10 @@ interface DaoTokens {
     @Query("SELECT * FROM tokens ORDER BY tul")
     fun getAllTokens(): List<EntityToken>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveToken(token: EntityToken)
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveAllTokens(tokens: List<EntityToken>)
 
     @Query("DELETE FROM tokens WHERE tul < :time")

@@ -22,6 +22,7 @@ import zw.co.guava.soterio.R
 import zw.co.guava.soterio.db.CoreDatabase
 import zw.co.guava.soterio.db.entity.EntityToken
 import zw.co.guava.soterio.db.repo.RepoTokens
+import zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy
 import java.util.concurrent.TimeUnit
 
 
@@ -30,8 +31,9 @@ class VerifyPhone : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var storedVerificationId: String;
     private lateinit var forceResendToken: PhoneAuthProvider.ForceResendingToken
-    private lateinit var phoneNumber: String;
+    private lateinit var phoneNumber: String
     private val scope = MainScope()
+    private val phoneNum = "+263785313872"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +47,7 @@ class VerifyPhone : AppCompatActivity() {
         phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNumber,
+            phoneNum,
             60,
             TimeUnit.SECONDS,
             this,
@@ -126,6 +128,7 @@ class VerifyPhone : AppCompatActivity() {
             Response.Listener {
                 Log.d("ServerAccess", "OnTokenFetchSuccess")
 
+
                 // Grab tokens and save them to Database
                 val tokens: List<EntityToken> = Gson().fromJson(it, Array<EntityToken>::class.java).toList()
                 val tokensDao = CoreDatabase.getDatabase(this).daoTokens()
@@ -136,6 +139,7 @@ class VerifyPhone : AppCompatActivity() {
 
                 // All set now lets navigate to next page
                 navigateToNextPage()
+
             },
             Response.ErrorListener {
                 Log.d("ServerAccess", "OnTokenFetchFailure: ${it.message}")
@@ -173,7 +177,7 @@ class VerifyPhone : AppCompatActivity() {
     }
 
     private fun navigateToNextPage() {
-        val intent = Intent(baseContext, VerifyAddress::class.java)
+        val intent = Intent(baseContext, PrivacyPolicy::class.java)
         startActivity(intent)
     }
 

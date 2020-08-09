@@ -16,11 +16,10 @@
         <activity android:name=".ui.get_and_upload_info.testing_centers" />
         <activity android:name=".ui.get_and_upload_info.hospitals" />
         <activity android:name=".ui.onboarding.auth.VerifyPhone" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.get_started" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_notifications" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.privacy_policy" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.enable_bluetooth" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.VerifyAddress" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.GetStarted" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.EnableNotifications" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy" />
+        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth" />
         <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.GetOtp" />
         <activity android:name="zw.co.guava.soterio.ui.main_apk.MainActivity" />
         <activity

@@ -7,7 +7,6 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.ui.onboarding.Onboarding
-import zw.co.guava.soterio.ui.onboarding.permissions.privacy_policy
 
 class MainActivity : AppCompatActivity() {
 
