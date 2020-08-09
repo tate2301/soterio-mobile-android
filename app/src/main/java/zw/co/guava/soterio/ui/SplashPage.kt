@@ -17,7 +17,7 @@ class SplashPage : AppCompatActivity() {
             override fun run() {
                 try
                 {
-                    Thread.sleep(3000)
+                    Thread.sleep(500)
 
                     val intent = Intent(baseContext, Onboarding::class.java)
                     startActivity(intent)
