@@ -35,7 +35,40 @@ class GetOtp : AppCompatActivity() {
         val phoneNumberLayout = findViewById<TextInputLayout>(R.id.phoneNumberLayout)
         val getOtpBtn = findViewById<Button>(R.id.getOtpButton)
 
+        getOtpBtn.setOnClickListener {
 
+            when {
+                (phoneNumber.text?.toList()?.size!! == 9) -> {
+
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(resources.getString(R.string.get_otp_title))
+                        .setMessage(resources.getString(R.string.get_otp_supporting_text) + Html.fromHtml("<b> +263" +phoneNumber.text + "</b>"))
+                        .setNegativeButton(resources.getString(R.string.get_otp_change_number)) { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        .setPositiveButton(resources.getString(R.string.proceed)) { dialog, _ ->
+                            val intent = Intent(baseContext, VerifyPhone::class.java)
+                            intent.putExtra("PHONE_NUMBER", "+263${phoneNumber.text}");
+                            startActivity(intent)
+                            dialog.dismiss()
+                        }
+                        .show()
+                    phoneNumberLayout.error = null
+                }
+
+                (phoneNumber.text?.toList()?.size!! < 9) -> {
+                    phoneNumberLayout.error = "Phone number too short!"
+                }
+
+                (phoneNumber.text.isNullOrBlank()) -> {
+                    phoneNumberLayout.error = "Phone number is required!"
+                }
+
+                else -> {
+                    phoneNumberLayout.error = null
+                }
+            }
+        }
 
     }
 

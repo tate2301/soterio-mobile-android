@@ -122,7 +122,7 @@ class VerifyPhone : AppCompatActivity() {
 
         // Tokens request from server
         val tokensRequest = StringRequest(Request.Method.GET,
-            getString(R.string.server_addr) + getString(R.string.route_tokens),
+            getString(R.string.server_addr) + getString(R.string.route_tokens) + "?uid=${mAuth.currentUser!!.uid}",
             Response.Listener {
                 Log.d("ServerAccess", "OnTokenFetchSuccess")
 
