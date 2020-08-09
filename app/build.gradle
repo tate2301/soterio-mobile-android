@@ -49,11 +49,7 @@ dependencies {
     // For Kotlin use kapt instead of annotationProcessor
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor  'android.arch.persistence.room:compiler:1.1.1'
-<<<<<<< HEAD
-    kapt 'android.arch.persistence.room:compiler:1.1.1'
-=======
     kapt "androidx.room:room-compiler:$room_version"
->>>>>>> 2d42dd16206e1d1f2cf559e2c6aea9415cb10b94
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
