@@ -11,4 +11,5 @@
     <color name="buttonColor2">#2B6CB0</color>
     <color name="faint">#718096</color>
     <color name="faint2">#CBD5E0</color>
+    <color name="white">#ffffff</color>
 </resources>

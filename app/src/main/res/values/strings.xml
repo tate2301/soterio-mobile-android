@@ -32,4 +32,7 @@
     <string name="server_addr">http://10.70.12.27</string>
     <string name="route_auth">/mobile/phoneUtils/auth</string>
     <string name="route_tokens">/mobile/phoneUtils/tokens</string>
+    <string name="error">Error</string>
+    <string name="verification_send_error">We couldn\'t send you a verification code. Please try again</string>
+    <string name="try_again">Try again</string>
 </resources>

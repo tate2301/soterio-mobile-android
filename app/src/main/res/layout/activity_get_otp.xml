@@ -33,7 +33,8 @@
             android:layout_marginRight="40dp"
             android:text="Provide your phone number so we can get in touch"
             android:textAlignment="center"
-            android:textSize="32sp" />
+            android:textColor="@color/darkText"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,8 +43,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="40dp"
             android:text="Add your phone number.We will send you a verification code to know that it is real."
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textAlignment="center"/>
 
     </LinearLayout>
 
@@ -85,7 +85,7 @@
             android:textAllCaps="false"
             android:textSize="14sp"
             android:background="@drawable/custom_button2"
-            android:textColor="@color/dotBaseColor"
+            android:textColor="@color/white"
             android:backgroundTint="@color/buttonColor2"
             android:layout_gravity="center"
             />

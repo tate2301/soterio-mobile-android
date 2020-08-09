@@ -45,6 +45,9 @@ class VerifyPhone : AppCompatActivity() {
             acknowledgeAuthenticationWithServer(currentUser)
         }
 
+        indeterminateBar.visibility = View.VISIBLE
+        activeOverlay.visibility = View.VISIBLE
+
         phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -128,6 +131,16 @@ class VerifyPhone : AppCompatActivity() {
                     Log.d("FirebaseAuth", "signInWithCredentialFailure", it.exception)
                     indeterminateBar.visibility = View.GONE
 
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(getString(R.string.error))
+                        .setMessage(getString(R.string.verification_send_error))
+                        .setCancelable(false)
+                        .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                            super.onBackPressed()
+                            dialog.dismiss()
+                        }
+                        .show()
+
                     if(it.exception is FirebaseAuthInvalidCredentialsException) {
                         otpInput.error = "Wrong verification code! Please try again"
                     }
@@ -138,15 +151,9 @@ class VerifyPhone : AppCompatActivity() {
     private fun acknowledgeAuthenticationWithServer(currentUser: FirebaseUser?) {
         val requestQueue = Volley.newRequestQueue(this)
 
-<<<<<<< HEAD
-        // 
-        val tokensRequest = StringRequest(Request.Method.GET,
-            getString(R.string.server_addr) + getString(R.string.route_tokens),
-=======
         // Tokens request from server
         val tokensRequest = StringRequest(Request.Method.GET,
             getString(R.string.server_addr) + getString(R.string.route_tokens) + "?uid=${mAuth.currentUser!!.uid}",
->>>>>>> 2d42dd16206e1d1f2cf559e2c6aea9415cb10b94
             Response.Listener {
                 Log.d("ServerAccess", "OnTokenFetchSuccess")
 
@@ -186,6 +193,15 @@ class VerifyPhone : AppCompatActivity() {
                 indeterminateBar.visibility = View.GONE
                 activeOverlay.visibility = View.GONE
 
+                MaterialAlertDialogBuilder(this)
+                    .setTitle(getString(R.string.error))
+                    .setMessage(getString(R.string.verification_send_error))
+                    .setCancelable(false)
+                    .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                        super.onBackPressed()
+                        dialog.dismiss()
+                    }
+                    .show()
             }){
             override fun getBodyContentType(): String {
                 return "application/json"

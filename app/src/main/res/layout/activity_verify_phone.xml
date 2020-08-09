@@ -100,8 +100,9 @@
             android:text="Verify"
             android:textSize="14sp"
             android:textAllCaps="false"
+
             android:background="@drawable/custom_button"
-            android:textColor="@color/dotBaseColor"
+            android:textColor="@color/white"
             android:backgroundTint="@color/colorPrimary"
             android:layout_gravity="center"
             />
