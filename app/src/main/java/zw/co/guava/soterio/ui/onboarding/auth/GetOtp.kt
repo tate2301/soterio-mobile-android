@@ -23,11 +23,6 @@ class GetOtp : AppCompatActivity() {
         setContentView(R.layout.activity_get_otp)
 
         mAuth = FirebaseAuth.getInstance();
-        val currentUser: FirebaseUser? = mAuth.currentUser;
-        if(currentUser != null) {
-            acknowledgeAuthentication(currentUser)
-        }
-
 
         val phoneNumber = findViewById<TextInputEditText>(R.id.phoneNumberTextField)
         val phoneNumberLayout = findViewById<TextInputLayout>(R.id.phoneNumberLayout)

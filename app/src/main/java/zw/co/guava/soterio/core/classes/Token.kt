@@ -1,4 +1,3 @@
 package zw.co.guava.soterio.core.classes
 
-class Token {
-}
+data class Token(val Identifier: String, val tul: Long, val tll: Long)

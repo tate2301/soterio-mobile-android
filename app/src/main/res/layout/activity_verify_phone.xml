@@ -74,7 +74,7 @@
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:text="Verify"
             android:textSize="14sp"
             android:textAllCaps="false"
