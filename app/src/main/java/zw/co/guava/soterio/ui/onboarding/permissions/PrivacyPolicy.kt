@@ -16,4 +16,15 @@ class PrivacyPolicy : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        exitFromApp()
+    }
+
+    private fun exitFromApp() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        startActivity(intent)
+    }
 }

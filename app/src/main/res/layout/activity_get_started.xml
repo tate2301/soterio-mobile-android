@@ -39,7 +39,8 @@
             android:layout_height="wrap_content"
             android:text="Thank you for joining\nthe fight against\nCOVID-19"
             android:textAlignment="center"
-            android:textSize="32sp" />
+            android:textColor="@color/darkText"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
             android:text="@string/registrationDone"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
@@ -70,7 +71,7 @@
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:id="@+id/getStartedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/custom_button"
                 android:text="Approve permissions"
                 android:textColor="@color/buttonColor"
