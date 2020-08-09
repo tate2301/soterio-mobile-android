@@ -29,4 +29,6 @@
     <string name="back_to_prev_screen">This will take you back to the previous screen</string>
     <string name="phone_number">PHONE_NUMBER</string>
     <string name="go_back">Go back</string>
+    <string name="server_addr">http://10.70.12.27</string>
+    <string name="route_auth">/mobile/phoneUtils/auth</string>
 </resources>
