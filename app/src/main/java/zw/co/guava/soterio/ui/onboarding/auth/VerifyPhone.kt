@@ -3,6 +3,7 @@ package zw.co.guava.soterio.ui.onboarding.auth
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -22,6 +23,7 @@ import zw.co.guava.soterio.R
 import zw.co.guava.soterio.db.CoreDatabase
 import zw.co.guava.soterio.db.entity.EntityToken
 import zw.co.guava.soterio.db.repo.RepoTokens
+import zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy
 import java.util.concurrent.TimeUnit
 
 
@@ -30,8 +32,9 @@ class VerifyPhone : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var storedVerificationId: String;
     private lateinit var forceResendToken: PhoneAuthProvider.ForceResendingToken
-    private lateinit var phoneNumber: String;
+    private lateinit var phoneNumber: String
     private val scope = MainScope()
+    private val phoneNum = "+263785313872"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +48,7 @@ class VerifyPhone : AppCompatActivity() {
         phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNumber,
+            phoneNum,
             60,
             TimeUnit.SECONDS,
             this,
@@ -68,6 +71,9 @@ class VerifyPhone : AppCompatActivity() {
 
         // Start the verification process on code input
         verifyButton.setOnClickListener {
+            indeterminateBar.visibility = View.VISIBLE
+            activeOverlay.visibility = View.VISIBLE
+
             val credential = PhoneAuthProvider.getCredential(storedVerificationId!!, otpInput.text.toString())
             signInWithPhoneAuthCredential(credential)
         }
@@ -75,12 +81,15 @@ class VerifyPhone : AppCompatActivity() {
 
     private val authCallbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+
             Log.d("FirebaseAuth", "OnVerificationCompleted:${p0}")
             signInWithPhoneAuthCredential(p0);
         }
 
         override fun onVerificationFailed(p0: FirebaseException) {
             Log.d("FirebaseAuth", "OnVerificationFailed: ${p0.message}")
+            indeterminateBar.visibility = View.GONE
+            activeOverlay.visibility = View.GONE
 
             if(p0 is FirebaseAuthInvalidCredentialsException) {
                 Log.d("FirebaseAuth", "OnVerificationFailed: FirebaseAuthInvalidCredentials")
@@ -93,9 +102,16 @@ class VerifyPhone : AppCompatActivity() {
         override fun onCodeSent(verificationId: String, p1: PhoneAuthProvider.ForceResendingToken) {
             super.onCodeSent(verificationId, p1)
             Log.d("FirebaseAuth", "OnCodeSent:${verificationId}")
+            indeterminateBar.visibility = View.GONE
+            activeOverlay.visibility = View.GONE
 
             storedVerificationId = verificationId
             forceResendToken = p1
+        }
+
+        override fun onCodeAutoRetrievalTimeOut(p0: String) {
+            super.onCodeAutoRetrievalTimeOut(p0)
+
         }
 
     }
@@ -110,6 +126,8 @@ class VerifyPhone : AppCompatActivity() {
 
                 } else {
                     Log.d("FirebaseAuth", "signInWithCredentialFailure", it.exception)
+                    indeterminateBar.visibility = View.GONE
+
                     if(it.exception is FirebaseAuthInvalidCredentialsException) {
                         otpInput.error = "Wrong verification code! Please try again"
                     }
@@ -132,6 +150,7 @@ class VerifyPhone : AppCompatActivity() {
             Response.Listener {
                 Log.d("ServerAccess", "OnTokenFetchSuccess")
 
+
                 // Grab tokens and save them to Database
                 val tokens: List<EntityToken> = Gson().fromJson(it, Array<EntityToken>::class.java).toList()
                 val tokensDao = CoreDatabase.getDatabase(this).daoTokens()
@@ -140,11 +159,17 @@ class VerifyPhone : AppCompatActivity() {
                     tokensRepo.saveAllTokens(tokens)
                 }
 
+                indeterminateBar.visibility = View.GONE
+                activeOverlay.visibility = View.GONE
+
                 // All set now lets navigate to next page
                 navigateToNextPage()
+
             },
             Response.ErrorListener {
                 Log.d("ServerAccess", "OnTokenFetchFailure: ${it.message}")
+                indeterminateBar.visibility = View.GONE
+                activeOverlay.visibility = View.GONE
 
             })
 
@@ -158,6 +183,8 @@ class VerifyPhone : AppCompatActivity() {
             },
             Response.ErrorListener {
                 Log.d("ServerAccess", "OnAuthFailure: ${it.message}")
+                indeterminateBar.visibility = View.GONE
+                activeOverlay.visibility = View.GONE
 
             }){
             override fun getBodyContentType(): String {
@@ -179,8 +206,15 @@ class VerifyPhone : AppCompatActivity() {
     }
 
     private fun navigateToNextPage() {
-        val intent = Intent(baseContext, VerifyAddress::class.java)
+        val intent = Intent(baseContext, PrivacyPolicy::class.java)
         startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        indeterminateBar.visibility = View.GONE
+        activeOverlay.visibility = View.GONE
+
     }
 
 }

@@ -44,7 +44,7 @@
                             android:layout_height="match_parent"
                             android:text="Contact tracing is activated"
                             android:textColor="@color/darkText"
-                            android:textSize="18sp"/>
+                            android:textSize="16sp"/>
 
                         <com.airbnb.lottie.LottieAnimationView
                             android:id="@+id/sonarAnimationView"
@@ -95,7 +95,7 @@
                             android:layout_height="match_parent"
                             android:text="Upload my encounter log"
                             android:textColor="@color/darkText"
-                            android:textSize="18sp"/>
+                            android:textSize="16sp"/>
 
                     </RelativeLayout>
 

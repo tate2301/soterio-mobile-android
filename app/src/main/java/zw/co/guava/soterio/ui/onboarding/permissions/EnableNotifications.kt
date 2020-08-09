@@ -3,16 +3,16 @@ package zw.co.guava.soterio.ui.onboarding.permissions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_enable_bluetooth.*
+import kotlinx.android.synthetic.main.activity_enable_notifications.*
 import zw.co.guava.soterio.R
 
-class enable_bluetooth : AppCompatActivity() {
+class EnableNotifications : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_enable_bluetooth)
+        setContentView(R.layout.activity_enable_notifications)
 
-        bluetoothButton.setOnClickListener {
-            val intent = Intent(baseContext, enable_notifications::class.java)
+        notificationButton.setOnClickListener {
+            val intent = Intent(baseContext, GetStarted::class.java)
             startActivity(intent)
         }
     }

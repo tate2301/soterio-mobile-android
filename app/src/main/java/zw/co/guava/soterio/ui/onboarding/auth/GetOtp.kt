@@ -3,22 +3,17 @@ package zw.co.guava.soterio.ui.onboarding.auth
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
+import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.activity_get_otp.*
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.ui.main_apk.MainActivity
-import zw.co.guava.soterio.ui.onboarding.Onboarding
-import java.util.concurrent.TimeUnit
 
 
 class GetOtp : AppCompatActivity() {
@@ -39,7 +34,7 @@ class GetOtp : AppCompatActivity() {
 
             when {
                 (phoneNumber.text?.toList()?.size!! == 9) -> {
-
+                    indeterminateBar.visibility = View.VISIBLE
                     MaterialAlertDialogBuilder(this)
                         .setTitle(resources.getString(R.string.get_otp_title))
                         .setMessage(resources.getString(R.string.get_otp_supporting_text) + Html.fromHtml("<b> +263" +phoneNumber.text + "</b>"))
@@ -51,6 +46,7 @@ class GetOtp : AppCompatActivity() {
                             intent.putExtra("PHONE_NUMBER", "+263${phoneNumber.text}");
                             startActivity(intent)
                             dialog.dismiss()
+                            indeterminateBar.visibility = View.GONE
                         }
                         .show()
                     phoneNumberLayout.error = null
@@ -74,6 +70,17 @@ class GetOtp : AppCompatActivity() {
 
     private fun acknowledgeAuthentication(currentUser: FirebaseUser?) {
         val intent = Intent(baseContext, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        exitFromApp()
+    }
+
+    private fun exitFromApp() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
         startActivity(intent)
     }
 

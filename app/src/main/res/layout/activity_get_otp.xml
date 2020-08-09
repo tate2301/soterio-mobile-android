@@ -15,7 +15,8 @@
         app:mpb_progressStyle="horizontal"
         android:visibility="gone"
         style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
-        tools:ignore="MissingClass" />
+        tools:ignore="MissingClass"
+        android:id="@+id/indeterminateBar"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -78,7 +79,7 @@
             android:id="@+id/getOtpButton"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:text="Get OTP"
             android:textAllCaps="false"
