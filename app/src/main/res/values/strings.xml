@@ -10,7 +10,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_onboarding">onboarding</string>
-    <string name="bluetoothText">This application uses low energy Bluetooth to log encounters between phones with the application installed. \n\nAndroid requires location and Bluetooth access to enable Bluetooth functions for Soterio. Soterio cannot work properly without it.</string>
+    <string name="bluetoothText">This application uses low energy bluetooth to log encounters between phones with the application installed. \n\nThis application also requires location access inorder to warn you of your interactions with COVID-19 redzones</string>
     <string name="privacy_policy"><b>Data collection</b> \n\nYour phone will be sharing a unique number with other phones that you come nearby. This number contains no personal identifiable information. At no point is your personal information ever shared with a third party.
         \n\n<b>Ensuring privacy</b> \n\nPhones will never share personal identifiable information. Your name and ID number are stored securely on your phone only. Only the Ministry of Health is able to decode the unique number your phone has received to a person.
         \n\n<b>Contact tracing and notifications</b> \n\nExposure notifications sent will not contain the identities of the patients whom you might have been in contact with. Nonetheless the notification will tell you the approximate time of the encounter and its duration.
@@ -35,11 +35,6 @@
     <string name="error">Error</string>
     <string name="verification_send_error">We couldn\'t send you a verification code. Please try again</string>
     <string name="try_again">Try again</string>
-    <string name="connection_error">There was a problem connecting to the Ministry of Health server. Please try again.</string>
-    <string name="permissions_required">Permissions required</string>
-    <string name="permissions_location_rationale">Android requires location and Bluetooth access to enable Bluetooth functions for Soterio. Soterio cannot work properly without it.</string>
-    <string name="enable_location">Enable</string>
-    <string name="get_started">Get started</string>
-    <string name="server_busy">Server is currently busy. Please try again later.</string>
-    <string name="change_number">Change number</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

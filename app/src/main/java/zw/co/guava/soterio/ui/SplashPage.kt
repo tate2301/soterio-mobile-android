@@ -6,7 +6,6 @@ import android.os.Bundle
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.ui.main.MainActivity
 import zw.co.guava.soterio.ui.onboarding.Onboarding
-import zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy
 
 class SplashPage : AppCompatActivity() {
 

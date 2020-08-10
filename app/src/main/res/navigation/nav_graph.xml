@@ -9,7 +9,7 @@
         android:id="@+id/FirstFragment"
         android:name="zw.co.guava.soterio.ui.onboarding.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
@@ -29,7 +29,7 @@
         android:id="@+id/FirstFragment"
         android:name="zw.co.guava.soterio.ui.onboarding.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
