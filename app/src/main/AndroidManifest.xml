@@ -5,23 +5,32 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.get_and_upload_info.feed"></activity>
+        <service
+            android:name=".services.ForegroundService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".services.BluetoothService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".ui.get_and_upload_info.feed" />
         <activity android:name=".ui.get_and_upload_info.testing_centers" />
         <activity android:name=".ui.get_and_upload_info.hospitals" />
         <activity android:name=".ui.onboarding.auth.VerifyPhone" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.GetStarted" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.EnableNotifications" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth" />
-        <activity android:name="zw.co.guava.soterio.ui.onboarding.auth.GetOtp" />
-        <activity android:name="zw.co.guava.soterio.ui.main_apk.MainActivity" />
+        <activity android:name=".ui.onboarding.permissions.GetStarted" />
+        <activity android:name=".ui.onboarding.permissions.EnableNotifications" />
+        <activity android:name=".ui.onboarding.permissions.PrivacyPolicy" />
+        <activity android:name=".ui.onboarding.permissions.EnableBluetooth" />
+        <activity android:name=".ui.onboarding.auth.GetOtp" />
+        <activity android:name=".ui.main.MainActivity" />
         <activity
             android:name=".ui.onboarding.Onboarding"
             android:label="@string/title_activity_onboarding"

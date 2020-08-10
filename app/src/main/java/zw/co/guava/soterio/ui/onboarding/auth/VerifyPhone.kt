@@ -138,6 +138,7 @@ class VerifyPhone : AppCompatActivity() {
                         .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
                             super.onBackPressed()
                             dialog.dismiss()
+                            finish()
                         }
                         .show()
 
@@ -200,6 +201,8 @@ class VerifyPhone : AppCompatActivity() {
                     .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
                         super.onBackPressed()
                         dialog.dismiss()
+                        finish()
+
                     }
                     .show()
             }){

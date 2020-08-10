@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_get_otp.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main_apk.MainActivity
+import zw.co.guava.soterio.ui.main.MainActivity
 
 
 class GetOtp : AppCompatActivity() {
