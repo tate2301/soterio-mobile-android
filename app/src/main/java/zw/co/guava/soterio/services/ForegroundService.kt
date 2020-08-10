@@ -6,7 +6,7 @@ import android.os.IBinder
 
 class ForegroundService : Service() {
 
-    override fun onBind(intent: Intent): IBinder {
-        TODO("Return the communication channel to the service.")
+    override fun onBind(intent: Intent): IBinder? {
+        return null
     }
 }

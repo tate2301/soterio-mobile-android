@@ -64,15 +64,16 @@ dependencies {
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
-
-
-
-
     // Volley
     implementation 'com.android.volley:volley:1.1.1'
 
     // GSON
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Easy Permissions
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    implementation 'com.github.quickpermissions:quickpermissions-kotlin:0.4.0'
 
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
