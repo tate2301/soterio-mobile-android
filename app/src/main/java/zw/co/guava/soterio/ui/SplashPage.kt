@@ -18,7 +18,7 @@ class SplashPage : AppCompatActivity() {
                 {
                     Thread.sleep(500)
 
-                    val intent = Intent(baseContext, MainActivity::class.java)
+                    val intent = Intent(baseContext, Onboarding::class.java)
                     startActivity(intent)
                     finish()
                 }catch (e: Exception)

@@ -32,15 +32,15 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public String[] slide_headings = {
-            "COVID-19 Cases",
             "Exposure notifications",
-            "COVID-19 Red-zones"
+            "Your data is secure",
+            "Track symptoms"
     };
 
     public String[] slide_description = {
-            "Get alerted if you have been in contact\n" + "with someone who has tested positive for\n" + "COVID-19",
-            "Get alerted if you have been in contact\n" + "with someone who has tested positive for\n" + "COVID-19",
-            "Get alerted if you have been in contact\n" + "with someone who has tested positive for\n" + "COVID-19"
+            "Get alerted when you might have come into\n" + "contact with someone who might have \n" + "COVID-19.",
+            "We will store your data securely and safely\n" + "and we do not distribute it to third \n" + "parties.",
+            "Update your status and symptoms in the\n" + "app to help contain the spread of \n" + "COVID-19."
     };
 
     @Override
