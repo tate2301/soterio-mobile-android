@@ -75,6 +75,8 @@ dependencies {
 
     implementation 'com.github.quickpermissions:quickpermissions-kotlin:0.4.0'
 
+    implementation "com.polidea.rxandroidble2:rxandroidble:1.11.1"
+
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

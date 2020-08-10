@@ -47,6 +47,8 @@ class VerifyPhone : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_phone)
         mAuth = FirebaseAuth.getInstance();
+        phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
+
         val currentUser: FirebaseUser? = mAuth.currentUser;
         if(currentUser != null) {
             acknowledgeAuthenticationWithServer(currentUser)
@@ -65,7 +67,6 @@ class VerifyPhone : AppCompatActivity() {
 
 
 
-        phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
         phoneNumberSubtext.text = "Enter the code sent to ${Html.fromHtml("<b>${phoneNumber}</b>")}"
 
         getVerificationCode(phoneNumber)

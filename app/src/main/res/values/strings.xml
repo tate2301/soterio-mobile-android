@@ -45,5 +45,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="phone_number_request">We need to register your phone number before getting started.</string>
     <string name="phone_verification">Phone Verification</string>
+    <string name="service_not_ok">Soterio not running</string>
+    <string name="service_not_ok_body">Make sure Soterio is active before you leave home or when in public places.</string>
+    <string name="service_not_ok_action">Check app now</string>
+    <string name="service_ok_title">Soterio is active</string>
+    <string name="service_ok_body">Keep COVIDSafe active when you leave home or are in public places.</string>
 
 </resources>
