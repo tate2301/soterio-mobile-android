@@ -196,7 +196,7 @@ class VerifyPhone : AppCompatActivity() {
 
                 MaterialAlertDialogBuilder(this)
                     .setTitle(getString(R.string.error))
-                    .setMessage("There was a problem connecting to the Ministry of Health server. Please try again.")
+                    .setMessage(getString(R.string.connection_error))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
                         super.onBackPressed()
