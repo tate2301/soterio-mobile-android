@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_landing_page.*
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.services.ForegroundService
+import zw.co.guava.soterio.ui.main.feed.FeedFragment
+import zw.co.guava.soterio.ui.main.home.HomeFragment
 import zw.co.guava.soterio.ui.onboarding.Onboarding
 import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var lottieViewSonar: LottieAnimationView;
     private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,13 +22,44 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_landing_page)
 
         mAuth = FirebaseAuth.getInstance()
-        lottieViewSonar = findViewById(R.id.sonarAnimationView)
-        lottieViewSonar.playAnimation()
+
+        val homeFragment = HomeFragment()
+        val feedFragment = FeedFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.frameLayoutView, homeFragment)
+            commit()
+        }
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.home -> {
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayoutView, homeFragment)
+                        commit()
+                    }
+                    true
+                }
+                R.id.feed -> {
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayoutView, feedFragment)
+                        commit()
+                    }
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
+
+
     }
 
     override fun onStart() {
         super.onStart()
-        if(/*mAuth.currentUser == null*/true){
+        if(mAuth.currentUser == null){
             val intent = Intent(baseContext, Onboarding::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -37,6 +70,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private fun checkForPermissionsAndStartServices() {
 
         val foregroundService = Intent(baseContext, ForegroundService::class.java)
@@ -45,6 +93,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
+        exitFromApp()
     }
+
+    private fun exitFromApp() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        startActivity(intent)
+    }
+
 }

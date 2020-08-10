@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.ui.main.MainActivity
+import zw.co.guava.soterio.ui.onboarding.Onboarding
 
 class SplashPage : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class SplashPage : AppCompatActivity() {
                 {
                     Thread.sleep(500)
 
-                    val intent = Intent(baseContext, Onboarding::class.java)
+                    val intent = Intent(baseContext, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }catch (e: Exception)
