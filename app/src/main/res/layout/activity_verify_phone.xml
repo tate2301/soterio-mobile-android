@@ -91,8 +91,16 @@
             app:lineWidth="2dp"
             app:viewType="rectangle" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/errorMessage"
+            android:textColor="@color/danger"
+            android:visibility="gone"/>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/verifyButton"
+            android:enabled="false"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -107,17 +115,66 @@
             android:layout_gravity="center"
             />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textAllCaps="false"
-            android:textColor="@color/text"
-            android:id="@+id/resendCodeLink"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/countDown"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/darkText"
+            android:text="1:00"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/didntReceiveCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Resend new code."
-            android:layout_gravity="center"
-            android:textSize="16sp" />
+            android:text="Didn't receive the code?" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50">
+                <com.google.android.material.button.MaterialButton
+                    android:visibility="visible"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text"
+                    android:id="@+id/editNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit phone number."
+                    app:icon="@drawable/ic_round_edit_24"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/text"
+                    android:paddingHorizontal="20dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:layout_gravity="end">
+                <com.google.android.material.button.MaterialButton
+                    android:visibility="visible"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:id="@+id/resendCodeLink"
+                    android:layout_weight="50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resend new code."
+                    android:layout_gravity="end"/>
+            </LinearLayout>
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/custom_button"
-                android:text="Approve permissions"
+                android:text="@string/get_started"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/colorPrimary"
                 android:textAllCaps="false" />
