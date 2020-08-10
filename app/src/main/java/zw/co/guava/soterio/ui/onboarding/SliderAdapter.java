@@ -26,9 +26,9 @@ public class SliderAdapter extends PagerAdapter {
     }
 
     public int[] slide_images = {
-        R.drawable.car1,
-        R.drawable.car1,
-        R.drawable.car1
+        R.drawable.ic_notification_img,
+        R.drawable.ic_safe_data,
+        R.drawable.ic_health
     };
 
     public String[] slide_headings = {
@@ -38,7 +38,7 @@ public class SliderAdapter extends PagerAdapter {
     };
 
     public String[] slide_description = {
-            "Get alerted when you might have come into\n" + "contact with someone who might have \n" + "COVID-19.",
+            "Get alerted when you might have come into\n"  + "contact with someone who might have \n" + "COVID-19.",
             "We will store your data securely and safely\n" + "and we do not distribute it to third \n" + "parties.",
             "Update your status and symptoms in the\n" + "app to help contain the spread of \n" + "COVID-19."
     };

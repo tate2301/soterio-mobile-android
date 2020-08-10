@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         permanentDeniedMethod = { req -> permissionsPermanentlyDenied(req) }
     )
 
-    private fun checkForPermissionsAndStartServices() = runWithPermissions(Manifest.permission.ACCESS_BACKGROUND_LOCATION, options = quickPermissionsOption) {
+    private fun checkForPermissionsAndStartServices() = runWithPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.BLUETOOTH, options = quickPermissionsOption) {
         val intent = Intent(applicationContext, ForegroundService::class.java)
         startService(intent)
     }

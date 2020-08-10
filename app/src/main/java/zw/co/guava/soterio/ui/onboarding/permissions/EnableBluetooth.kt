@@ -54,7 +54,7 @@ class EnableBluetooth : AppCompatActivity() {
             .show()
     }
 
-    private fun requestBluetoothPermissions() = runWithPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, options = quickPermissionsOption) {
+    private fun requestBluetoothPermissions() = runWithPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.BLUETOOTH, options = quickPermissionsOption) {
         val intent = Intent(baseContext, GetStarted::class.java)
         startActivity(intent)
     }

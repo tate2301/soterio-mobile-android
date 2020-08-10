@@ -14,7 +14,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -36,13 +36,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="390dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
         android:id="@+id/layout_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout4"
         android:layout_below="@id/linearLayout2"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
+        android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp">
 
         <ScrollView
@@ -58,13 +59,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_below="@id/layout_text"
+        android:layout_above="@id/linearLayout3"
         android:id="@+id/linearLayout4"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -90,9 +89,8 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayout4"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="28dp"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 

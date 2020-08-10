@@ -86,15 +86,13 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             app:cursorWidth="2dp"
-            app:hideLineWhenFilled="true"
             app:itemCount="6"
             app:itemHeight="48dp"
-            app:itemRadius="4dp"
             app:itemSpacing="8dp"
             app:itemWidth="48dp"
             app:lineColor="@color/faint"
             app:lineWidth="2dp"
-            app:viewType="rectangle" />
+            app:viewType="line"/>
 
         <TextView
             android:layout_width="wrap_content"

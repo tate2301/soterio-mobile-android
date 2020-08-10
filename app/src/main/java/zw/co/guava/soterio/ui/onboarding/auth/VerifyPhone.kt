@@ -108,6 +108,8 @@ class VerifyPhone : AppCompatActivity() {
         activeOverlay.visibility = View.VISIBLE
         didntReceiveCode.visibility = View.GONE
         resendCodeLink.visibility = View.GONE
+        errorMessage.visibility = View.GONE
+        errorMessage.text = ""
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             phoneNumber,
@@ -145,13 +147,19 @@ class VerifyPhone : AppCompatActivity() {
                 Log.d("FirebaseAuth", "OnVerificationFailed: FirebaseAuthInvalidCredentials")
                 errorMessage.text = "Invalid verification code"
                 errorMessage.visibility = View.VISIBLE
-
+                return
             } else if(p0 is FirebaseTooManyRequestsException) {
                 Log.d("FirebaseAuth", "OnVerificationFailed: FirebaseTooManyRequests: SMS Qouta")
                 errorMessage.text = "Too many authentication requests"
                 errorMessage.visibility = View.VISIBLE
-
+                return
             }
+
+            countDown.visibility = View.GONE
+            errorMessage.text = "Firebase Error: ${p0.localizedMessage}"
+            errorMessage.visibility = View.VISIBLE
+            resendCodeLink.visibility = View.VISIBLE
+            resendCodeLink.isEnabled = true
         }
 
         // Verification code has been sent
