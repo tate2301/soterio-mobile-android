@@ -43,5 +43,7 @@
     <string name="server_busy">Server is currently busy. Please try again later.</string>
     <string name="change_number">Change number</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="phone_number_request">We need to register your phone number before getting started.</string>
+    <string name="phone_verification">Phone Verification</string>
 
 </resources>

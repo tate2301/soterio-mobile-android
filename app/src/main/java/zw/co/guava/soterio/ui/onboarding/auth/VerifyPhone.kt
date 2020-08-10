@@ -1,9 +1,11 @@
 package zw.co.guava.soterio.ui.onboarding.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
@@ -40,6 +42,7 @@ class VerifyPhone : AppCompatActivity() {
     private val scope = MainScope()
     private val phoneNum = "+263785313872"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_phone)
@@ -63,7 +66,7 @@ class VerifyPhone : AppCompatActivity() {
 
 
         phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
-
+        phoneNumberSubtext.text = "Enter the code sent to ${Html.fromHtml("<b>${phoneNumber}</b>")}"
 
         getVerificationCode(phoneNumber)
 

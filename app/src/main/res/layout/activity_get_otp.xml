@@ -24,14 +24,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="156dp"
+            android:src="@drawable/ic_mobile_phone"
+            android:maxHeight="400dp"/>
         <TextView
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:text="Provide your phone number so we can get in touch"
+            android:text="@string/phone_verification"
             android:textAlignment="center"
             android:textColor="@color/darkText"
             android:textSize="24sp" />
@@ -42,7 +48,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="40dp"
-            android:text="Add your phone number.We will send you a verification code to know that it is real."
+            android:text="@string/phone_number_request"
             android:textAlignment="center"/>
 
     </LinearLayout>
@@ -51,10 +57,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter Phone Number"
+            android:textColor="@color/light"
+            android:textFontWeight="500"
+            />
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -77,8 +90,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/getOtpButton"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:text="Get OTP"
