@@ -22,6 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.main.services.TestingCenters"></activity>
+        <activity android:name=".ui.main.services.Hospitals" />
+        <activity android:name=".ui.main.services.UploadEcounter" />
+        <activity android:name=".ui.main.services.ExposureNotifications" />
+
         <service
             android:name=".services.ForegroundService"
             android:enabled="true"
