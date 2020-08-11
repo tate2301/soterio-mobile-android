@@ -1,4 +1,4 @@
-package zw.co.guava.soterio.ui.main.services
+package zw.co.guava.soterio.ui.main.getinfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -7,7 +7,7 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingTop="12dp"
-    tools:context=".ui.main.services.UploadEcounter">
+    tools:context=".ui.main.getinfo.UploadEcounter">
 
     <LinearLayout
         android:id="@+id/linearLayout"

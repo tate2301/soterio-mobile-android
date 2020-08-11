@@ -3,19 +3,13 @@ package zw.co.guava.soterio.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_exposure_notifications.*
 import kotlinx.android.synthetic.main.activity_landing_page.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.services.ForegroundService
 import zw.co.guava.soterio.ui.main.feed.FeedFragment
 import zw.co.guava.soterio.ui.main.home.HomeFragment
-import zw.co.guava.soterio.ui.main.services.ExposureNotifications
 import zw.co.guava.soterio.ui.onboarding.Onboarding
-import zw.co.guava.soterio.ui.onboarding.auth.GetOtp
-import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
 
 class MainActivity : AppCompatActivity() {
 
