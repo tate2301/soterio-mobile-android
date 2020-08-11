@@ -1,13 +1,18 @@
 package zw.co.guava.soterio.ui.main
 
+import android.Manifest
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_exposure_notifications.*
 import kotlinx.android.synthetic.main.activity_landing_page.*
+import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
 import kotlinx.android.synthetic.main.fragment_home.*
+import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsRequest
+import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsOptions
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.services.ForegroundService
 import zw.co.guava.soterio.ui.main.feed.FeedFragment
@@ -16,9 +21,12 @@ import zw.co.guava.soterio.ui.main.services.ExposureNotifications
 import zw.co.guava.soterio.ui.onboarding.Onboarding
 import zw.co.guava.soterio.ui.onboarding.auth.GetOtp
 import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
+import zw.co.guava.soterio.ui.onboarding.permissions.GetStarted
+
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var lottieViewSonar: LottieAnimationView;
     private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,25 +83,47 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    private val quickPermissionsOption = QuickPermissionsOptions(
+        rationaleMessage = "Custom rational message",
+        permanentlyDeniedMessage = "Custom permanently denied message",
+        rationaleMethod = { req -> rationaleCallback(req) },
+        permanentDeniedMethod = { req -> permissionsPermanentlyDenied(req) }
+    )
+
+    private fun checkForPermissionsAndStartServices() = runWithPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.BLUETOOTH, options = quickPermissionsOption) {
+        val intent = Intent(applicationContext, ForegroundService::class.java)
+        startService(intent)
+    }
+
+    private fun permissionsPermanentlyDenied(req: QuickPermissionsRequest) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.permissions_required))
+            .setMessage(getString(R.string.permissions_location_rationale))
+            .setCancelable(false)
+            .setPositiveButton(getString(R.string.enable_location)) { dialog, _ ->
+                req.openAppSettings()
+                dialog.dismiss()
+            }
+            .show()
+    }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-    private fun checkForPermissionsAndStartServices() {
+    private fun rationaleCallback(req: QuickPermissionsRequest) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(getString(R.string.permissions_required))
+            .setMessage(getString(R.string.permissions_location_rationale))
+            .setCancelable(false)
+            .setPositiveButton(getString(R.string.enable_location)) { dialog, _ ->
+                req.openAppSettings()
+                dialog.dismiss()
+            }
+            .show()
 
         val foregroundService = Intent(baseContext, ForegroundService::class.java)
         startService(foregroundService)
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -105,5 +135,6 @@ class MainActivity : AppCompatActivity() {
         intent.addCategory(Intent.CATEGORY_HOME)
         startActivity(intent)
     }
+
 
 }

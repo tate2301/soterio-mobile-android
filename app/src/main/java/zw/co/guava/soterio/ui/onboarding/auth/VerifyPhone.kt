@@ -1,7 +1,12 @@
 package zw.co.guava.soterio.ui.onboarding.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.text.Editable
+import android.text.Html
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +32,7 @@ import zw.co.guava.soterio.ui.onboarding.permissions.PrivacyPolicy
 import java.util.concurrent.TimeUnit
 
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class VerifyPhone : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
@@ -36,38 +42,52 @@ class VerifyPhone : AppCompatActivity() {
     private val scope = MainScope()
     private val phoneNum = "+263785313872"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verify_phone)
         mAuth = FirebaseAuth.getInstance();
+        phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
+
         val currentUser: FirebaseUser? = mAuth.currentUser;
         if(currentUser != null) {
             acknowledgeAuthenticationWithServer(currentUser)
         }
 
-        indeterminateBar.visibility = View.VISIBLE
-        activeOverlay.visibility = View.VISIBLE
+        // Disable verification button if text less than 6
+        otpInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
 
-        phoneNumber = intent.getStringExtra(getString(R.string.phone_number)).toString()
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                verifyButton.isEnabled = s.length == 6 && ::storedVerificationId.isInitialized
+            }
+        })
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            phoneNum,
-            60,
-            TimeUnit.SECONDS,
-            this,
-            authCallbacks
-        )
+
+
+        phoneNumberSubtext.text = "Enter the code sent to ${Html.fromHtml("<b>${phoneNumber}</b>")}"
+
+        getVerificationCode(phoneNumber)
+
 
         resendCodeLink.setOnClickListener {
+            getVerificationCode(phoneNumber)
+        }
+
+        editNumber.setOnClickListener{
             MaterialAlertDialogBuilder(this)
-                .setTitle(resources.getString(R.string.get_otp_title))
+                .setTitle(getString(R.string.get_otp_change_number))
                 .setMessage(getString(R.string.back_to_prev_screen))
-                .setNegativeButton(resources.getString(R.string.cancel)) { dialog, _ ->
+                .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                     dialog.dismiss()
                 }
-                .setPositiveButton(getString(R.string.go_back)) { dialog, _ ->
-                    super.onBackPressed()
+                .setPositiveButton(getString(R.string.change_number)) { dialog, _ ->
                     dialog.dismiss()
+                    val intent = Intent(this, GetOtp::class.java)
+                    startActivity(intent)
+                    finish()
                 }
                 .show()
         }
@@ -76,17 +96,47 @@ class VerifyPhone : AppCompatActivity() {
         verifyButton.setOnClickListener {
             indeterminateBar.visibility = View.VISIBLE
             activeOverlay.visibility = View.VISIBLE
+            errorMessage.visibility = View.GONE
 
-            val credential = PhoneAuthProvider.getCredential(storedVerificationId!!, otpInput.text.toString())
+            val credential = PhoneAuthProvider.getCredential(storedVerificationId, otpInput.text.toString())
             signInWithPhoneAuthCredential(credential)
         }
     }
 
+    private fun getVerificationCode(phoneNumber: String) {
+        // Control views
+        indeterminateBar.visibility = View.VISIBLE
+        activeOverlay.visibility = View.VISIBLE
+        didntReceiveCode.visibility = View.GONE
+        resendCodeLink.visibility = View.GONE
+        errorMessage.visibility = View.GONE
+        errorMessage.text = ""
+
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            phoneNumber,
+            60,
+            TimeUnit.SECONDS,
+            this,
+            authCallbacks
+        )
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        didntReceiveCode.visibility = View.GONE
+        resendCodeLink.visibility = View.GONE
+        errorMessage.visibility = View.GONE
+
+    }
+
     private val authCallbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-
             Log.d("FirebaseAuth", "OnVerificationCompleted:${p0}")
             signInWithPhoneAuthCredential(p0);
+            errorMessage.visibility = View.GONE
+
         }
 
         override fun onVerificationFailed(p0: FirebaseException) {
@@ -96,9 +146,21 @@ class VerifyPhone : AppCompatActivity() {
 
             if(p0 is FirebaseAuthInvalidCredentialsException) {
                 Log.d("FirebaseAuth", "OnVerificationFailed: FirebaseAuthInvalidCredentials")
+                errorMessage.text = "Invalid verification code"
+                errorMessage.visibility = View.VISIBLE
+                return
             } else if(p0 is FirebaseTooManyRequestsException) {
                 Log.d("FirebaseAuth", "OnVerificationFailed: FirebaseTooManyRequests: SMS Qouta")
+                errorMessage.text = "Too many authentication requests"
+                errorMessage.visibility = View.VISIBLE
+                return
             }
+
+            countDown.visibility = View.GONE
+            errorMessage.text = "Firebase Error: ${p0.localizedMessage}"
+            errorMessage.visibility = View.VISIBLE
+            resendCodeLink.visibility = View.VISIBLE
+            resendCodeLink.isEnabled = true
         }
 
         // Verification code has been sent
@@ -107,6 +169,27 @@ class VerifyPhone : AppCompatActivity() {
             Log.d("FirebaseAuth", "OnCodeSent:${verificationId}")
             indeterminateBar.visibility = View.GONE
             activeOverlay.visibility = View.GONE
+
+            // Update UI timer
+            val timer = object: CountDownTimer(60000, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+
+                    if(millisUntilFinished > 10000) {
+                        countDown.text = "0:${millisUntilFinished/1000}"
+
+                    } else {
+                        countDown.text = "0:0${millisUntilFinished/1000}"
+
+                    }
+                }
+
+                override fun onFinish() {
+                    countDown.visibility = View.GONE
+                    didntReceiveCode.visibility = View.VISIBLE
+                    resendCodeLink.visibility = View.VISIBLE
+                }
+            }
+            timer.start()
 
             storedVerificationId = verificationId
             forceResendToken = p1
@@ -130,6 +213,30 @@ class VerifyPhone : AppCompatActivity() {
                 } else {
                     Log.d("FirebaseAuth", "signInWithCredentialFailure", it.exception)
                     indeterminateBar.visibility = View.GONE
+                    activeOverlay.visibility = View.GONE
+                    errorMessage.visibility = View.VISIBLE
+
+                    if(it.exception is FirebaseTooManyRequestsException) {
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle(getString(R.string.error))
+                            .setMessage(getString(R.string.server_busy))
+                            .setCancelable(false)
+                            .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
+                                super.onBackPressed()
+                                dialog.dismiss()
+                                finish()
+                            }
+                            .show()
+
+                        return@addOnCompleteListener
+                    }
+
+                    if(it.exception is FirebaseAuthInvalidCredentialsException) {
+                        errorMessage.error = "Wrong verification code! Please try again"
+                        errorMessage.visibility = View.VISIBLE
+
+                        return@addOnCompleteListener
+                    }
 
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.error))
@@ -141,10 +248,6 @@ class VerifyPhone : AppCompatActivity() {
                             finish()
                         }
                         .show()
-
-                    if(it.exception is FirebaseAuthInvalidCredentialsException) {
-                        otpInput.error = "Wrong verification code! Please try again"
-                    }
                 }
             }
     }
@@ -196,7 +299,7 @@ class VerifyPhone : AppCompatActivity() {
 
                 MaterialAlertDialogBuilder(this)
                     .setTitle(getString(R.string.error))
-                    .setMessage("There was a problem connecting to the Ministry of Health server. Please try again.")
+                    .setMessage(getString(R.string.connection_error))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
                         super.onBackPressed()
@@ -233,7 +336,8 @@ class VerifyPhone : AppCompatActivity() {
         super.onBackPressed()
         indeterminateBar.visibility = View.GONE
         activeOverlay.visibility = View.GONE
-
+        didntReceiveCode.visibility = View.GONE
+        resendCodeLink.visibility = View.GONE
     }
 
 }

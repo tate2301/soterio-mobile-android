@@ -11,6 +11,9 @@ interface DaoTokens {
     @Query("SELECT * FROM tokens ORDER BY tul")
     fun getAllTokens(): List<EntityToken>
 
+    @Query("SELECT * FROM tokens WHERE tll <= :time AND :time <= tul")
+    suspend fun getActiveToken(time: Long): EntityToken
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveToken(token: EntityToken)
 
