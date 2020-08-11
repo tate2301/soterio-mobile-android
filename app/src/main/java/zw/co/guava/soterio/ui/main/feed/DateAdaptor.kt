@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.animal_list_item.view.*
+import kotlinx.android.synthetic.main.date_list_item.view.*
 import zw.co.guava.soterio.R
 
-class AnimalAdapter(val items: ArrayList<String>, val context: FeedFragment) : RecyclerView.Adapter<ViewHolder>() {
+class DateAdaptor(val items: ArrayList<String>, val context: FeedFragment) : RecyclerView.Adapter<ViewHolder>() {
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -16,7 +16,7 @@ class AnimalAdapter(val items: ArrayList<String>, val context: FeedFragment) : R
 
     // Inflates the item views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.animal_list_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.date_list_item, parent, false))
     }
 
     // Binds each animal in the ArrayList to a view

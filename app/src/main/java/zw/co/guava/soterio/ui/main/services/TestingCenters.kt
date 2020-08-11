@@ -7,6 +7,6 @@ import zw.co.guava.soterio.R
 class TestingCenters : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_testing_centers2)
+        setContentView(R.layout.activity_testing_centers)
     }
 }
