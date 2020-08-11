@@ -7,16 +7,20 @@ import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_landing_page.*
+import kotlinx.android.synthetic.main.activity_exposure_notifications.*
 import kotlinx.android.synthetic.main.activity_landing_page.*
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
-import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsOptions
+import kotlinx.android.synthetic.main.fragment_home.*
 import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsRequest
+import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsOptions
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.services.ForegroundService
 import zw.co.guava.soterio.ui.main.feed.FeedFragment
 import zw.co.guava.soterio.ui.main.home.HomeFragment
+import zw.co.guava.soterio.ui.main.services.ExposureNotifications
 import zw.co.guava.soterio.ui.onboarding.Onboarding
+import zw.co.guava.soterio.ui.onboarding.auth.GetOtp
+import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
 import zw.co.guava.soterio.ui.onboarding.permissions.GetStarted
 
 
