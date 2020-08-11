@@ -49,6 +49,6 @@
     <string name="service_not_ok_body">Make sure Soterio is active before you leave home or when in public places.</string>
     <string name="service_not_ok_action">Check app now</string>
     <string name="service_ok_title">Soterio is active</string>
-    <string name="service_ok_body">Keep COVIDSafe active when you leave home or are in public places.</string>
+    <string name="service_ok_body">Keep Soterio active when you leave home or are in public places.</string>
 
 </resources>

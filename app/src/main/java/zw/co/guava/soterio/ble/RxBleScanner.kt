@@ -1,5 +1,6 @@
 package zw.co.guava.soterio.ble
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
@@ -19,9 +20,9 @@ import kotlinx.coroutines.*
 import zw.co.guava.soterio.Constants
 import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.core.classes.CentralLog
-import zw.co.guava.soterio.core.classes.StreetPassStorage
+import zw.co.guava.soterio.core.classes.SoterioStorage
 import zw.co.guava.soterio.db.entity.EntityEncounter
-import java.util.HashMap
+import java.util.*
 
 
 class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
@@ -58,14 +59,17 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
     @InternalCoroutinesApi
     fun start() {
         appDatabase = Soterio.database!!
-        Log.d("RxBle", "Starting Scan")
+        CentralLog.d("RxBle", "Starting Scan")
         val logOptions = LogOptions.Builder()
-            .setLogLevel(LogConstants.DEBUG)
+            .setLogLevel(LogConstants.VERBOSE)
             .setLogger { level, tag, msg -> CentralLog.d(tag, msg) }
             .build()
+
         RxBleClient.updateLogOptions(logOptions)
+
         scanJob = scope.launch {
             while (isActive) {
+
                 CentralLog.d(TAG,"scan - Starting")
                 scanDisposable = scan()
                 var attempts = 0
@@ -73,6 +77,7 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
                     if (!isActive) return@launch
                     delay(5000)
                 }
+
                 CentralLog.d(TAG,"scan - Stopping")
                 if (!isActive) return@launch
 
@@ -114,39 +119,70 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
         scanJob?.cancel()
     }
 
+    @SuppressLint("CheckResult")
     private fun connectToDevice(scanResult: ScanResult, txPowerAdvertised: Int, coroutineScope: CoroutineScope) {
         val macAddress = scanResult.bleDevice.macAddress
         Log.d("RxBle", "Found $macAddress mmeta ${scanResult.scanRecord.serviceData}")
         CentralLog.d(TAG,"Connecting to $macAddress")
-        scanResult
-            .bleDevice
-            .establishConnection(false)
-            .flatMapSingle { connection ->
-                negotiateMTU(connection)
-            }
-            .flatMapSingle { connection ->
 
-                // Read data here
-                read(connection, txPowerAdvertised, coroutineScope)
-                    .doOnSuccess {
 
-                        // Write data here
-                        write(connection)
-
-                    }
-            }
-            .doOnSubscribe {
-                connections.add(it)
-            }
-            .take(1)
-            .blockingSubscribe(
-                { event ->
-                    storeEvent(event)
-                },
-                { e ->
-                    CentralLog.e(TAG,"failed reading from $macAddress - $e")
+        //  Read characteristic
+        scope.launch {
+            scanResult
+                .bleDevice
+                .establishConnection(false)
+                .flatMapSingle { connection ->
+                    negotiateMTU(connection)
                 }
-            )
+                .flatMapSingle { connection ->
+                    // Read data here
+                    //read(connection, txPowerAdvertised, scope)
+                    val streetPassStorage = SoterioStorage(context)
+
+                    connection.readCharacteristic(Constants.MONITOR_SERVICE_UUID)
+                        .doOnSuccess{data ->
+                            CentralLog.d(TAG, "Event:Read:Success: ${String(data)}")
+                            val encounter = EntityEncounter(
+                                Identifier = String(data),
+                                rssi = 0 /*connection.readRssi().blockingGet()*/,
+                                txPower = txPowerAdvertised,
+                                timestamp = System.currentTimeMillis()
+                            )
+
+                            scope.launch {
+                                streetPassStorage.saveEncounter(encounter)
+                                CentralLog.d(TAG, "Event:DatabaseSave:Success: ${encounter.Identifier}")
+                            }
+
+                        }.flatMap {
+
+                            var identifier = "";//
+                            runBlocking {
+                                identifier  = streetPassStorage.getActiveToken().Identifier
+                            }
+
+                            connection.writeCharacteristic(Constants.MONITOR_SERVICE_UUID, identifier.toByteArray())
+                                .doOnSuccess {
+                                    CentralLog.d(TAG, "Event:Write:Success: ${String(it)}")
+                                }
+                        }
+
+                }
+                .doOnSubscribe {
+                    connections.add(it)
+                }
+                .take(1)
+                .blockingSubscribe(
+                    {
+                        //storeEvent(event)
+                    },
+                    { e ->
+                        CentralLog.e(TAG,"failed reading from $macAddress - ${e.message}")
+                    }
+                )
+        }
+
+
     }
 
     private fun negotiateMTU(connection: RxBleConnection): Single<RxBleConnection> {
@@ -157,33 +193,58 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
                 CentralLog.e(TAG,"Failed to negotiate MTU: $e")
                 Observable.error<Throwable?>(e)
             }
-            .doOnSuccess { CentralLog.i(TAG,"Negotiated MTU: $it") }
+            .doOnSuccess {
+                CentralLog.i(TAG,"Negotiated MTU: $it")
+                // write(connection, scope)
+            }
             .ignoreElement()
             .andThen(Single.just(connection))
     }
 
+    /*
     private fun read(connection: RxBleConnection, txPower: Int, scope: CoroutineScope): Single<Event> = Single.zip(
             connection.readCharacteristic(Constants.MONITOR_SERVICE_UUID),
             connection.readRssi(),
             BiFunction<ByteArray, Int, Event> { characteristicValue, rssi ->
-                Event(characteristicValue, rssi, txPower, scope, System.currentTimeMillis())
+                val e =Event(characteristicValue, rssi, txPower, scope, System.currentTimeMillis())
+                write(e, connection, scope)
+                e
             }
         )
+    */
 
-    private fun write(connection: RxBleConnection) {
-        val writeDataPayload: MutableMap<String, ByteArray> = HashMap()
-        val streetPassStorage = StreetPassStorage(context)
+    /*
+    private fun write(event: Event, connection: RxBleConnection, scope: CoroutineScope): Event {
+         scope.launch {
+                val writeDataPayload: MutableMap<String, ByteArray> = HashMap()
+                val streetPassStorage = SoterioStorage(context)
 
-        scope.launch {
-            val identifier = streetPassStorage.getActiveToken().Identifier
-            writeDataPayload["identifier"] = identifier.toByteArray()
-            writeDataPayload["rssi"] = connection.readRssi().toString().toByteArray()
-            CentralLog.d(TAG,"Event:WritingRequest $identifier")
 
-            connection.writeCharacteristic(Constants.MONITOR_SERVICE_UUID, writeDataPayload.toString().toByteArray())
-        }
+                val identifier = streetPassStorage.getActiveToken().Identifier
+                writeDataPayload["identifier"] = identifier.toByteArray()
+                writeDataPayload["rssi"] = connection.readRssi().toString().toByteArray()
+                CentralLog.d(TAG, "Event:WritingRequest $writeDataPayload")
+
+                connection.writeCharacteristic(
+                    Constants.MONITOR_SERVICE_UUID,
+                    writeDataPayload.toString().toByteArray()
+                ).doOnSuccess {
+                        CentralLog.d(TAG, "Event:Write:Success:  ${String(it)}")
+                    }
+                    .doOnError {
+                        CentralLog.e(TAG, "Event:Write:Fail:  ${(it.message)}")
+                    }
+                    .subscribe({
+                        CentralLog.d(TAG, "Event:Write:Success:2:  ${String(it)}" )
+                    }, {
+                        CentralLog.e(TAG, "Event:Write:Fail:2:  " + it.message)
+                    })
+
+            }
+
+        return event
     }
-
+    */
     private fun onConnectionError(e: Throwable) {
         CentralLog.d(TAG,"Connection failed with: $e")
     }

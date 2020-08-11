@@ -2,6 +2,8 @@
   <dictionary name="weare">
     <words>
       <w>onboarding</w>
+      <w>rssi</w>
+      <w>soterio</w>
     </words>
   </dictionary>
 </component>

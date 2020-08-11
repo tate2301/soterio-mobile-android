@@ -9,10 +9,10 @@ import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import zw.co.guava.soterio.Constants
-import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.core.classes.CentralLog
-import zw.co.guava.soterio.core.classes.StreetPassStorage
+import zw.co.guava.soterio.core.classes.SoterioStorage
 import zw.co.guava.soterio.core.classes.Utils
+import zw.co.guava.soterio.db.entity.EntityEncounter
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -76,6 +76,7 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
             }
         }
 
+
         override fun onServiceAdded(status: Int, service: BluetoothGattService?) {
             super.onServiceAdded(status, service)
             Log.d("GattServer", "Added service to gatt $service")
@@ -84,9 +85,10 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
 
         override fun onCharacteristicReadRequest(device: BluetoothDevice?, requestId: Int, offset: Int, characteristic: BluetoothGattCharacteristic?) {
             super.onCharacteristicReadRequest(device, requestId, offset, characteristic)
+            CentralLog.i(TAG, "onCharacteristicReadRequest")
 
             scope.launch {
-                val streetPassStorage = StreetPassStorage(context)
+                val streetPassStorage = SoterioStorage(context)
                 val identifier = streetPassStorage.getActiveToken().Identifier
 
                 mGattServer.sendResponse(device, requestId, 0, offset, identifier.toByteArray())
@@ -95,35 +97,31 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
 
         }
 
-        override fun onExecuteWrite(device: BluetoothDevice, requestId: Int, execute: Boolean) {
+        override fun onExecuteWrite(device: BluetoothDevice?, requestId: Int, execute: Boolean) {
             super.onExecuteWrite(device, requestId, execute)
-            val data = writeDataPayload[device.address]
-            CentralLog.i(TAG, "onExecuteWrite - $requestId- ${device.address} -")
+            CentralLog.i(TAG, "onCharacteristicExecuteWriteRequest - - preparedWrite")
 
-            data.let { dataBuffer ->
-                if (dataBuffer != null) {
-                    CentralLog.i(TAG, "onExecuteWrite - $requestId- ${device.address} - ${String(dataBuffer, Charsets.UTF_8)}")
-
-                    mGattServer?.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, 0, null)
-
-                } else {
-                    mGattServer?.sendResponse(device, requestId, BluetoothGatt.GATT_FAILURE, 0, null)
-                }
-            }
         }
 
         override fun onCharacteristicWriteRequest(device: BluetoothDevice?, requestId: Int, characteristic: BluetoothGattCharacteristic, preparedWrite: Boolean, responseNeeded: Boolean, offset: Int, value: ByteArray?) {
-            CentralLog.i(TAG, "onCharacteristicWriteRequest - - preparedWrite: $preparedWrite")
-            CentralLog.i(TAG, "onCharacteristicWriteRequest from - $requestId - $offset with data ${value.toString()}")
+            CentralLog.i(TAG, "onCharacteristicWriteRequest from - $requestId - $offset with data ${String(value!!)}")
+            val streetPassStorage = SoterioStorage(context)
 
-            device?.let {
-                CentralLog.i(TAG, "onCharacteristicWriteRequest - ${device.address} - preparedWrite: $preparedWrite")
-                CentralLog.i(TAG, "onCharacteristicWriteRequest from ${device.address} - $requestId - $offset with data ${value.toString()}")
+            val encounter: EntityEncounter = EntityEncounter(
+                Identifier = String(value!!),
+                rssi = 0,
+                txPower = 0,
+                timestamp = System.currentTimeMillis()
+            )
 
+            // TODO - Save the encounter
+            scope.launch {
+                streetPassStorage.saveEncounter(encounter)
+                CentralLog.d(TAG, "Event:DatabaseSave:Success: ${encounter.Identifier}")
             }
-            if (device == null) {
-                CentralLog.e(TAG, "Write stopped - no device")
-            }
+
+            mGattServer.sendResponse(device, requestId, 0, offset, "XX".toByteArray())
+
         }
 
 
