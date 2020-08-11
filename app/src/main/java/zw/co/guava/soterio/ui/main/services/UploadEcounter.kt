@@ -1,12 +1,12 @@
-package zw.co.guava.soterio.ui.get_and_upload_info
+package zw.co.guava.soterio.ui.main.services
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import zw.co.guava.soterio.R
 
-class hospitals : AppCompatActivity() {
+class UploadEcounter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hospitals)
+        setContentView(R.layout.activity_upload_ecounter)
     }
 }

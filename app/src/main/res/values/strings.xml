@@ -37,4 +37,45 @@
     <string name="try_again">Try again</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--dates for the recyclerview -->
+    <string-array name="dates">
+        <item>Fri, Jul 25</item>
+        <item>Fri, Jul 26</item>
+        <item>Fri, Jul 27</item>
+        <item>Fri, Jul 28</item>
+        <item>Fri, Jul 29</item>
+        <item>Fri, Jul 30</item>
+    </string-array>
+
+    <!--time for the recyclerview -->
+    <string-array name="hoursAgo">
+        <item>Fri, Jul 25</item>
+        <item>Fri, Jul 26</item>
+        <item>Fri, Jul 27</item>
+        <item>Fri, Jul 28</item>
+        <item>Fri, Jul 29</item>
+        <item>Fri, Jul 30</item>
+    </string-array>
+
+    <!--location for the recyclerview -->
+    <string-array name="RedzoneLocation">
+        <item>Fri, Jul 25</item>
+        <item>Fri, Jul 26</item>
+        <item>Fri, Jul 27</item>
+        <item>Fri, Jul 28</item>
+        <item>Fri, Jul 29</item>
+        <item>Fri, Jul 30</item>
+    </string-array>
+
+    <!--alert for the recyclerview -->
+    <string-array name="alert">
+        <item>Fri, Jul 25</item>
+        <item>Fri, Jul 26</item>
+        <item>Fri, Jul 27</item>
+        <item>Fri, Jul 28</item>
+        <item>Fri, Jul 29</item>
+        <item>Fri, Jul 30</item>
+    </string-array>
+
 </resources>
