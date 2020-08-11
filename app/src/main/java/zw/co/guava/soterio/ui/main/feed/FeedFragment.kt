@@ -13,7 +13,7 @@ import zw.co.guava.soterio.R
 
 class FeedFragment : Fragment() {
 
-    // Initializing an empty ArrayList to be filled with animals
+    // Initializing an empty ArrayList to be filled with dates
     val dates: ArrayList<String> = ArrayList()
 
 
@@ -24,13 +24,13 @@ class FeedFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_feed, container, false)
-        // Loads animals into the ArrayList
+        // Loads dates into the ArrayList
 
-        addAnimals()
+        addDates()
 
         // Creates a vertical Layout Manager
 
-        val rv = root.findViewById<RecyclerView>(R.id.rv_animal_list)
+        val rv = root.findViewById<RecyclerView>(R.id.date_recycler_view)
         rv.layoutManager = LinearLayoutManager(activity)
 
         // Access the RecyclerView Adapter and load the data into it
@@ -38,13 +38,12 @@ class FeedFragment : Fragment() {
 
         // Inflate the layout for this fragment
 
-
         return root
 
     }
 
-    // Adds animals to the empty animals ArrayList
-    fun addAnimals() {
+    // Adds dates to the empty dates ArrayList
+    fun addDates() {
 
         for(i in 1..21){
             dates.add("$i-12-20")
