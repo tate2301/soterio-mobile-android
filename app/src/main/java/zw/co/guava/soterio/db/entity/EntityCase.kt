@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "cases")
-data class Case (
+data class EntityCase (
     @PrimaryKey @ColumnInfo(name = "Identifier") val Identifier: String,
     @ColumnInfo(name = "tll") val tll: Long,
     @ColumnInfo(name="tul") val tul: Long)
