@@ -1,10 +1,12 @@
 package zw.co.guava.soterio
 
 import android.app.Application
+import android.content.Intent
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
 import zw.co.guava.soterio.core.classes.Utils
 import zw.co.guava.soterio.db.CoreDatabase
+import zw.co.guava.soterio.services.SyncService
 
 class Soterio : Application() {
 
@@ -21,6 +23,8 @@ class Soterio : Application() {
             .fallbackToDestructiveMigration()
             .build()
 
+        val intent = Intent(this, SyncService::class.java)
+        startService(intent)
 
     }
 

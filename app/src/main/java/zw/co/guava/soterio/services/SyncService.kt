@@ -6,6 +6,7 @@ import android.os.IBinder
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import zw.co.guava.soterio.core.classes.CentralLog
 import zw.co.guava.soterio.sync.DBSyncWorker
 import java.util.concurrent.TimeUnit
 
@@ -22,8 +23,8 @@ class SyncService : Service() {
 
         val work = PeriodicWorkRequestBuilder<DBSyncWorker>(12, TimeUnit.HOURS)
             .build()
-
         workManager.enqueueUniquePeriodicWork("DBSyncWorker", ExistingPeriodicWorkPolicy.REPLACE, work)
 
+        CentralLog.d("Event:DBSyncWorker", "Enqueueing worker now")
     }
 }
