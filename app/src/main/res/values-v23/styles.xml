@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -7,16 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">#4A5568</item>
         <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="statusBarForeground">@color/text</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:textColor">#4A5568</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="Theme.MaterialComponents.Light.NoActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="Theme.MaterialComponents.Light.NoActionBar" />
-
 </resources>
