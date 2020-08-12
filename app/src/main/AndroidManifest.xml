@@ -26,6 +26,9 @@
 
         <activity android:name=".ui.main.getinfo.testing.TestingCentersActivity" />
         <activity android:name=".ui.main.getinfo.hospitals.HospitalsActivity" />
+        <activity android:name=".ui.main.feed.TestNested"></activity>
+        <activity android:name=".ui.main.getinfo.testing.TestingCenters" />
+        <activity android:name=".ui.main.getinfo.hospitals.Hospitals" />
         <activity android:name=".ui.main.getinfo.encounters.UploadEcounter" />
         <activity android:name=".ui.main.getinfo.exposure.ExposureNotificationsActivity" />
 
