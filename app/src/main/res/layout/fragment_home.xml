@@ -22,15 +22,15 @@
 
             <include layout="@layout/item_contact_tracing_card" />
 
-            <include layout="@layout/item_no_contact" />
+            <include android:id="@+id/noContactCard" android:visibility="gone" layout="@layout/item_no_contact" />
 
-            <include layout="@layout/item_exposure_notifications_alert" />
+            <include android:id="@+id/exposureNotificationsCard" layout="@layout/item_exposure_notifications_alert" />
 
-            <include layout="@layout/item_upload_log" />
+            <include android:id="@+id/uploadLogCard" android:visibility="gone" layout="@layout/item_upload_log" />
 
             <include layout="@layout/item_positive_contact" />
 
-            <include layout="@layout/item_wash_hands" />
+            <include android:id="@+id/washHandsCard" android:visibility="gone" layout="@layout/item_wash_hands" />
 
 
 
@@ -41,11 +41,11 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/hospitalsButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
-                    android:id="@+id/hospitalsButton"
                     app:cardElevation="0dp">
                     <RelativeLayout
                         android:paddingVertical="12dp"
@@ -66,9 +66,11 @@
                             android:text="Get directions to nearby hospitals"
                             android:layout_below="@id/hospitalsText"
                             />
-                        <ImageButton
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_round_arrow_forward_24"
                             android:layout_alignParentEnd="true"/>
                     </RelativeLayout>
@@ -101,9 +103,11 @@
                             android:text="Get tested if you feel sick"
                             android:layout_below="@id/testingCentresText"
                             />
-                        <ImageButton
+                        <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_round_arrow_forward_24"
                             android:layout_alignParentEnd="true"/>
                     </RelativeLayout>

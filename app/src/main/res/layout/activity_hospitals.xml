@@ -15,14 +15,8 @@
         android:background="@color/colorPrimary"
         android:gravity="top"
         app:titleTextColor="@color/white"
+        app:navigationIcon="?attr/homeAsUpIndicator"
         android:elevation="4dp">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_round_arrow_back_24"
-            android:tint="@color/darkText" />
-
 
         <TextView
             android:id="@+id/toolbar_title"
@@ -69,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mzari Hospital"
+                android:textColor="@color/darkText"
                 android:textSize="16sp"/>
             <TextView
                 android:layout_width="wrap_content"
