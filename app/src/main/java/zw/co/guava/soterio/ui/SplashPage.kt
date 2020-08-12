@@ -19,7 +19,7 @@ class SplashPage : AppCompatActivity() {
                 {
                     Thread.sleep(500)
 
-                    val intent = Intent(baseContext, Hospitals::class.java)
+                    val intent = Intent(baseContext, MainActivity::class.java)
                     startActivity(intent)
                     finish()
                 }catch (e: Exception)

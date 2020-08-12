@@ -54,5 +54,10 @@
     <string name="dismiss">Dismiss</string>
     <string name="what_should_i_do">What should I do?</string>
     <string name="no_contact_text">It seems that you have not been in contact with anyone who has recently been diagnosed with COVID-19</string>
+    <string name="positive_contact">You may have been in contact with a COVID-19 patient</string>
+    <string name="positive_contact_text">It seems that you may have been recently in contact with someone who has tested positive for the coronavirus.</string>
+    <string name="call_covid_team_text">If you feel sick, please call the National COVID-19 response team by clicking CALL below</string>
+    <string name="call_now">Call now</string>
+    <string name="self_isolation_message">To keep your family and friends safe, you are advised to self-isolate and monitor your symptoms</string>
 
 </resources>

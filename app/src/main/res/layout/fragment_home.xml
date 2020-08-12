@@ -24,7 +24,11 @@
 
             <include layout="@layout/item_no_contact" />
 
+            <include layout="@layout/item_exposure_notifications_alert" />
+
             <include layout="@layout/item_upload_log" />
+
+            <include layout="@layout/item_positive_contact" />
 
             <include layout="@layout/item_wash_hands" />
 
@@ -48,6 +52,7 @@
                         android:paddingStart="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:id="@+id/hospitalsText"
                             android:layout_width="wrap_content"
@@ -82,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:paddingVertical="12dp"
                         android:paddingStart="8dp">
+
                         <TextView
                             android:id="@+id/testingCentresText"
                             android:layout_width="wrap_content"
