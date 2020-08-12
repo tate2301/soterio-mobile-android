@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.getinfo.hospitals.HospitalsAdapter
 
 class TestingCenters : AppCompatActivity() {
 
@@ -20,6 +19,11 @@ class TestingCenters : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.testing_centers_recycler_view)
         rv.layoutManager = LinearLayoutManager(this)
 
+        rv.adapter = TestingCentersAdaptor(
+            testingCenters,
+            distances,
+            this
+        )
 
 
     }
