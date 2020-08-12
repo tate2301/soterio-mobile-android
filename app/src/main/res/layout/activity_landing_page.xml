@@ -11,12 +11,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/frameLayoutView"
-        android:layout_above="@id/bottomNavigation">
+        android:layout_above="@id/bannerTag">
 
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/bannerTag"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="powered by"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chinhoyi University of Technology"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/darkText"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

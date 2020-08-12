@@ -22,11 +22,11 @@
 
             <include layout="@layout/item_contact_tracing_card" />
 
-            <include android:id="@+id/noContactCard" android:visibility="gone" layout="@layout/item_no_contact" />
+            <include android:id="@+id/noContactCard" android:visibility="visible" layout="@layout/item_no_contact" />
 
             <include android:id="@+id/uploadLogCard" android:visibility="gone" layout="@layout/item_upload_log" />
 
-            <include layout="@layout/item_positive_contact" />
+            <include android:id="@+id/positiveContactCard" android:visibility="gone" layout="@layout/item_positive_contact" />
 
             <include android:id="@+id/washHandsCard" android:visibility="gone" layout="@layout/item_wash_hands" />
 

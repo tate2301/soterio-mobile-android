@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class EntityFeed(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") val id: Int = 0,
     @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "text") val text: String,
     @ColumnInfo(name = "timestamp" ) val timestamp: Long
 )

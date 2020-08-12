@@ -1,5 +1,6 @@
 package zw.co.guava.soterio
 
+import androidx.sqlite.db.SimpleSQLiteQuery
 import java.util.*
 
 class Constants {
@@ -14,6 +15,11 @@ class Constants {
         val MONITOR_SERVICE_UUID: UUID = UUID.fromString("00002301-0000-1000-8000-00805f9b34fb")
         val MONITOR_IDENTITY_CHARACTERISTIC_UUID: UUID = MONITOR_SERVICE_UUID
         const val SERVICE_FOREGROUND_NOTIFICATION_ID = 1023010
+        const val Radius = 6378.137
+
+        fun getByDistanceRawQuery(lat: Double, lon: Double): SimpleSQLiteQuery {
+            return SimpleSQLiteQuery("SELECT *, acos(sin($lat)*sin(radians(latitude)) + cos($lat)*cos(radians(latitude))cos(radians(longitude)-$lon))$Radius AS dist FROM hospitals ORDER BY dist DESC")
+        }
 
     }
 }

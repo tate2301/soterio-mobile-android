@@ -21,8 +21,7 @@ class SyncService : Service() {
         super.onCreate()
         workManager = WorkManager.getInstance()
 
-        val work = PeriodicWorkRequestBuilder<DBSyncWorker>(12, TimeUnit.HOURS)
-            .build()
+        val work = PeriodicWorkRequestBuilder<DBSyncWorker>(12, TimeUnit.HOURS).build()
         workManager.enqueueUniquePeriodicWork("DBSyncWorker", ExistingPeriodicWorkPolicy.REPLACE, work)
 
         CentralLog.d("Event:DBSyncWorker", "Enqueueing worker now")
