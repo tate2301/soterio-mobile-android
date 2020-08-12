@@ -7,7 +7,7 @@ import androidx.room.Query
 import zw.co.guava.soterio.db.entity.EntityToken
 
 @Dao
-interface CaseDao {
+interface DaoCase {
     @Query("SELECT * FROM cases ORDER BY tul")
     fun getAllCases(): List<EntityToken>
 

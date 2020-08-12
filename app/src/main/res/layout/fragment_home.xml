@@ -24,14 +24,13 @@
 
             <include android:id="@+id/noContactCard" android:visibility="gone" layout="@layout/item_no_contact" />
 
-            <include android:id="@+id/exposureNotificationsCard" layout="@layout/item_exposure_notifications_alert" />
-
             <include android:id="@+id/uploadLogCard" android:visibility="gone" layout="@layout/item_upload_log" />
 
             <include layout="@layout/item_positive_contact" />
 
             <include android:id="@+id/washHandsCard" android:visibility="gone" layout="@layout/item_wash_hands" />
 
+            <include android:id="@+id/exposureNotificationsCard" android:visibility="gone" layout="@layout/item_exposure_notifications_alert" />
 
 
             <LinearLayout
