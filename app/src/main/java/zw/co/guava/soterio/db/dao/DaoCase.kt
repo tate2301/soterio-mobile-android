@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import zw.co.guava.soterio.db.entity.EntityToken
-import zw.co.soterio.monitor.storage.entity.Case
 
 @Dao
 interface CaseDao {

@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.date_list_item.view.*
-import kotlinx.android.synthetic.main.hospitals_lst_item.view.*
+import kotlinx.android.synthetic.main.item_hospitals_list.view.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.feed.FeedFragment
 
 class DateAdaptor(private val items: ArrayList<String>, private val items2: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -20,7 +18,7 @@ class DateAdaptor(private val items: ArrayList<String>, private val items2: Arra
 
     // Inflates the item views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.hospitals_lst_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_hospitals_list, parent, false))
     }
 
     // Binds each date in the ArrayList to a view

@@ -18,15 +18,14 @@
         android:elevation="4dp">
 
         <ImageButton
-            android:layout_width="32dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_round_arrow_back_24"
             android:tint="@color/darkText" />
 
 
         <TextView
             android:id="@+id/toolbar_title"
-            android:layout_marginStart="24dp"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -64,6 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/buttonColor2"
                 android:text="Nearest"/>
             <TextView
                 android:layout_width="wrap_content"

@@ -17,7 +17,6 @@ import zw.co.guava.soterio.R
 import zw.co.guava.soterio.services.ForegroundService
 import zw.co.guava.soterio.ui.main.feed.FeedFragment
 import zw.co.guava.soterio.ui.main.home.HomeFragment
-import zw.co.guava.soterio.ui.main.services.ExposureNotifications
 import zw.co.guava.soterio.ui.onboarding.Onboarding
 import zw.co.guava.soterio.ui.onboarding.auth.GetOtp
 import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
