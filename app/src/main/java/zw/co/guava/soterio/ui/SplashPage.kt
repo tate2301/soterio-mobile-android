@@ -4,14 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.db.CoreDatabase
-import zw.co.guava.soterio.db.entity.EntityHospital
-import zw.co.guava.soterio.db.repo.RepoHospitals
 import zw.co.guava.soterio.ui.main.MainActivity
-import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotifications
-import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCenters
 
 class SplashPage : AppCompatActivity() {
 

@@ -3,16 +3,16 @@ package zw.co.guava.soterio.ui.main.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
-import kotlinx.android.synthetic.main.fragment_home.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotifications
+import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotificationsActivity
 import zw.co.guava.soterio.ui.main.getinfo.hospitals.HospitalsActivity
-import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCenters
+import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCentersActivity
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -40,6 +40,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun initRefsAndListeners(root: View) {
         val hospitals = root.findViewById<MaterialCardView>(R.id.hospitalsButton)
+        val testingCentresButton  = root.findViewById<MaterialCardView>(R.id.testingCentresButton)
         val exposureNotificationsButton = root.findViewById<MaterialCardView>(R.id.exposureNotificationsButton)
 
         hospitals.setOnClickListener {
@@ -48,13 +49,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         testingCentresButton.setOnClickListener{
-            val testingCentresIntent = Intent(activity, TestingCenters::class.java)
+            val testingCentresIntent = Intent(activity, TestingCentersActivity::class.java)
             startActivity(testingCentresIntent)
         }
 
         exposureNotificationsButton.setOnClickListener {
-            val exposureNotificationsIntent = Intent(activity, ExposureNotifications::class.java)
+            val exposureNotificationsIntent = Intent(activity, ExposureNotificationsActivity::class.java)
             startActivity(exposureNotificationsIntent)
         }
     }
+
 }

@@ -1,9 +1,8 @@
-package zw.co.guava.soterio.ui.main.getinfo.hospitals
+package zw.co.guava.soterio.ui.main.getinfo.testing
 
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -14,16 +13,16 @@ import com.google.android.material.appbar.MaterialToolbar
 import zw.co.guava.soterio.R
 
 
-class HospitalsActivity : AppCompatActivity(){
+class TestingCentersActivity : AppCompatActivity() {
 
-    private lateinit var hospitalsViewModel: HospitalViewModel
+    private lateinit var testingCentreViewModel: TestingCentreViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_hospitals)
+        setContentView(R.layout.activity_testing_centers)
 
         val mToolbar: MaterialToolbar = findViewById<View>(R.id.toolbar) as MaterialToolbar
-        mToolbar.title = "Hospitals"
+        mToolbar.title = "Testing Centres"
         setSupportActionBar(mToolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         mToolbar.setNavigationOnClickListener {
@@ -31,26 +30,19 @@ class HospitalsActivity : AppCompatActivity(){
         }
 
 
-        hospitalsViewModel = ViewModelProvider(this).get(HospitalViewModel::class.java)
+        testingCentreViewModel = ViewModelProvider(this).get(TestingCentreViewModel::class.java)
 
-        val adapter = HospitalsAdapter(this)
-        val rv = findViewById<RecyclerView>(R.id.hospitals_recycler_view)
-
-
-        hospitalsViewModel.allWords.observe(this, Observer { hospitals ->
+        val adapter = TestingCentresAdapter(this)
+        testingCentreViewModel.allTestingCentres.observe(this, Observer { testingCentres ->
             // Update the cached copy of the words in the adapter.
-            hospitals?.let { adapter.setHospitals(it) }
+            testingCentres?.let { adapter.setTestingCentres(it) }
         })
-
-
+        val rv = findViewById<RecyclerView>(R.id.testing_centers_recycler_view)
         rv.layoutManager = LinearLayoutManager(this)
+
         rv.adapter = adapter
 
 
-
     }
-
-
-
 
 }

@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="0dp"
+        android:id="@+id/testing_centre_container"
         app:cardCornerRadius="0dp"
         android:clickable="true"
         android:focusable="true">

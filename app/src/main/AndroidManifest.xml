@@ -5,12 +5,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
     <application
@@ -22,10 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.main.getinfo.testing.TestingCenters"></activity>
+        <service
+            android:name=".services.SyncService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".ui.main.getinfo.testing.TestingCentersActivity" />
         <activity android:name=".ui.main.getinfo.hospitals.HospitalsActivity" />
         <activity android:name=".ui.main.getinfo.encounters.UploadEcounter" />
-        <activity android:name=".ui.main.getinfo.exposure.ExposureNotifications" />
+        <activity android:name=".ui.main.getinfo.exposure.ExposureNotificationsActivity" />
 
         <service
             android:name=".services.ForegroundService"

@@ -77,13 +77,13 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/testingCentresButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardElevation="0dp">
                     <RelativeLayout
-                        android:id="@+id/testingCentresButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="12dp"

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.guava.soterio.R
 
-class ExposureNotifications : AppCompatActivity() {
+class ExposureNotificationsActivity : AppCompatActivity() {
 
     private val dates: ArrayList<String> = ArrayList()
     private val location: ArrayList<String> = ArrayList()

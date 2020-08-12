@@ -43,6 +43,10 @@ android {
 }
 
 dependencies {
+    // work manager
+    def work_version = "1.0.0-beta02"
+    implementation "android.arch.work:work-runtime-ktx:$work_version"
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def room_version = "2.2.5"
 
