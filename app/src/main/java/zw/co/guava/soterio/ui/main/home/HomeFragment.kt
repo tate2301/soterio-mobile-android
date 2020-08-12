@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.getinfo.ExposureNotifications
-import zw.co.guava.soterio.ui.main.getinfo.Hospitals
+import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotifications
+import zw.co.guava.soterio.ui.main.getinfo.hospitals.HospitalsActivity
+import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCenters
+
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     lateinit var lottieViewSonar: LottieAnimationView;
@@ -37,13 +38,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         return root
     }
 
-    fun initRefsAndListeners(root: View) {
+    private fun initRefsAndListeners(root: View) {
         val hospitals = root.findViewById<MaterialCardView>(R.id.hospitalsButton)
         val exposureNotificationsButton = root.findViewById<MaterialCardView>(R.id.exposureNotificationsButton)
 
         hospitals.setOnClickListener {
-            val hospitalIntent = Intent(activity, Hospitals::class.java)
+            val hospitalIntent = Intent(activity, HospitalsActivity::class.java)
             startActivity(hospitalIntent)
+        }
+
+        testingCentresButton.setOnClickListener{
+            val testingCentresIntent = Intent(activity, TestingCenters::class.java)
+            startActivity(testingCentresIntent)
         }
 
         exposureNotificationsButton.setOnClickListener {
