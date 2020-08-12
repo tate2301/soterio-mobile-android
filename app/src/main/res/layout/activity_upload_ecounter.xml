@@ -7,7 +7,7 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingTop="12dp"
-    tools:context=".ui.main.services.UploadEcounter">
+    tools:context=".ui.main.getinfo.UploadEcounter">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -43,8 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text="Upload your encounter log here"
-            android:textSize="16sp"/>
+            android:text="Upload your encounter log here"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addressTextField"
@@ -67,13 +66,13 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="If you have tested positive, a Health official will give you an authorization code that you will use here to upload your encounter log."
-            android:textSize="16sp"/>
+            />
 
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:id="@+id/startUploadBtn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/custom_button"
             android:text="Start upload"
             android:backgroundTint="@color/colorPrimary"
