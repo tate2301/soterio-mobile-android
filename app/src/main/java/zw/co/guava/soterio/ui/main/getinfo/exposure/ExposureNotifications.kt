@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.getinfo.hospitals.DateAdaptor
 
 class ExposureNotifications : AppCompatActivity() {
 

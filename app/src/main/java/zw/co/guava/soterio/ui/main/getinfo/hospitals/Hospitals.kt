@@ -21,7 +21,7 @@ class Hospitals : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.hospitals_recycler_view)
         rv.layoutManager = LinearLayoutManager(this)
 
-        rv.adapter = DateAdaptor(
+        rv.adapter = HospitalsAdaptor(
             hospitals,
             distances,
             this

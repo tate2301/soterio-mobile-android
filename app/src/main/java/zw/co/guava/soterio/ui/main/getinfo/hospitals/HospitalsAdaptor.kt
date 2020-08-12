@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_hospitals_list.view.*
 import zw.co.guava.soterio.R
 
-class DateAdaptor(private val items: ArrayList<String>, private val items2: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class HospitalsAdaptor(private val items: ArrayList<String>, private val items2: ArrayList<String>, val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     // Gets the number of dates in the list
     override fun getItemCount(): Int {

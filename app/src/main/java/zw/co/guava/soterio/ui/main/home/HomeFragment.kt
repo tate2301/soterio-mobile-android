@@ -11,8 +11,8 @@ import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_home.*
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.ui.main.getinfo.ExposureNotifications
-import zw.co.guava.soterio.ui.main.getinfo.Hospitals
+import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotifications
+import zw.co.guava.soterio.ui.main.getinfo.hospitals.Hospitals
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     lateinit var lottieViewSonar: LottieAnimationView;
