@@ -10,138 +10,105 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:paddingTop="8dp"
-        android:paddingBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="8dp"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginTop="8dp"
-                app:strokeColor="@color/faint2"
-                app:cardCornerRadius="4dp"
-                app:cardElevation="2dp"
-                android:clickable="true"
-                android:checkable="false">
+            <include layout="@layout/item_contact_tracing_card" />
 
-                <LinearLayout
+            <include layout="@layout/item_no_contact" />
+
+            <include layout="@layout/item_upload_log" />
+
+            <include layout="@layout/item_wash_hands" />
+
+
+
+            <LinearLayout
+                android:layout_marginVertical="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/hospitalsButton"
+                    app:cardElevation="0dp">
                     <RelativeLayout
+                        android:paddingVertical="12dp"
+                        android:paddingStart="8dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
+                        android:layout_height="wrap_content">
                         <TextView
+                            android:id="@+id/hospitalsText"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Contact tracing is activated"
+                            android:layout_height="wrap_content"
+                            android:text="Hospitals"
                             android:textColor="@color/darkText"
                             android:textSize="16sp"/>
-
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/sonarAnimationView"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_alignParentEnd="true"
-                            app:lottie_fileName="sonar.json"
-                            app:lottie_loop="true"
-                            app:lottie_autoPlay="true" />
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Get directions to nearby hospitals"
+                            android:layout_below="@id/hospitalsText"
+                            />
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_round_arrow_forward_24"
+                            android:layout_alignParentEnd="true"/>
                     </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/faint"
-                        android:text="@string/thank_you_for_helping_in_the_fight_against_corona_virus"/>
+                </com.google.android.material.card.MaterialCardView>
 
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_marginHorizontal="8dp"
-                app:strokeWidth="1dp"
-                app:strokeColor="@color/faint2"
-                app:cardCornerRadius="4dp"
-                android:elevation="0dp"
-                app:cardElevation="0dp"
-                android:layout_marginTop="16dp"
-                android:checkable="false">
-
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardElevation="0dp">
                     <RelativeLayout
+                        android:id="@+id/testingCentresButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
+                        android:paddingVertical="12dp"
+                        android:paddingStart="8dp">
                         <TextView
+                            android:id="@+id/testingCentresText"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="Upload my encounter log"
+                            android:layout_height="wrap_content"
+                            android:text="Testing Centres"
                             android:textColor="@color/darkText"
                             android:textSize="16sp"/>
-
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Get tested if you feel sick"
+                            android:layout_below="@id/testingCentresText"
+                            />
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_round_arrow_forward_24"
+                            android:layout_alignParentEnd="true"/>
                     </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/faint"
-                        android:text="@string/health_authorization_notify" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_gravity="end"
-                        android:gravity="end"
-                        android:layout_marginTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/dismissUploadButton"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
-                            android:textAllCaps="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:layout_gravity="end"
-                            android:textColor="@color/text"
-                            android:text="@string/dismiss"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/startUpload"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
-                            android:textAllCaps="false"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/ic_upload"
-                            app:iconPadding="12dp"
-                            app:iconGravity="start"
-                            app:iconSize="16dp"
-                            android:layout_gravity="end"
-                            android:text="@string/start_upload"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"/>
 
         </LinearLayout>
     </ScrollView>

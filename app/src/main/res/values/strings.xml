@@ -20,7 +20,6 @@
     <string name="start_upload">Start upload</string>
     <string name="health_authorization_notify">Authorization by a Health official will be required.</string>
     <string name="thank_you_for_helping_in_the_fight_against_corona_virus">Thank you for helping in the fight against corona virus.</string>
-    <string name="dismiss">Dismiss</string>
     <string name="get_otp_change_number">Change number</string>
     <string name="proceed">Proceed</string>
     <string name="cancel">Cancel</string>
@@ -50,5 +49,10 @@
     <string name="service_not_ok_action">Check app now</string>
     <string name="service_ok_title">Soterio is active</string>
     <string name="service_ok_body">Keep Soterio active when you leave home or are in public places.</string>
+    <string name="always_wash_your_hands">Always wash your hands</string>
+    <string name="wash_hands_message">To keep yourself and your family safe, wash your hands with running water for at least 20 seconds.</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="what_should_i_do">What should I do?</string>
+    <string name="no_contact_text">It seems that you have not been in contact with anyone who has recently been diagnosed with COVID-19</string>
 
 </resources>
