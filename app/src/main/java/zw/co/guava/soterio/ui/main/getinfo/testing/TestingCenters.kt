@@ -1,10 +1,11 @@
-package zw.co.guava.soterio.ui.main.getinfo
+package zw.co.guava.soterio.ui.main.getinfo.testing
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import zw.co.guava.soterio.R
+import zw.co.guava.soterio.ui.main.getinfo.hospitals.DateAdaptor
 
 class TestingCenters : AppCompatActivity() {
 
@@ -21,7 +22,11 @@ class TestingCenters : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.testing_centers_recycler_view)
         rv.layoutManager = LinearLayoutManager(this)
 
-        rv.adapter = DateAdaptor(testingCenters, distances,this)
+        rv.adapter = DateAdaptor(
+            testingCenters,
+            distances,
+            this
+        )
 
     }
 
