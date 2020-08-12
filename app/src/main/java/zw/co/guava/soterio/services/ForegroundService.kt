@@ -22,7 +22,6 @@ import zw.co.guava.soterio.R
 import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.ble.RxBleScanner
 import zw.co.guava.soterio.core.classes.CentralLog
-import zw.co.guava.soterio.core.classes.NotificationsTemplates
 import zw.co.guava.soterio.core.classes.Utils
 import zw.co.soterio.monitor.ble.BluetoothAdvertiser
 
@@ -73,7 +72,7 @@ class ForegroundService : Service() {
 
         val builder = applicationContext?.let {
             NotificationCompat.Builder(it, "2301001")
-                .setSmallIcon(R.drawable.notification)
+                .setSmallIcon(R.drawable.ic_soterio)
                 .setColor(Color.BLUE)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(getText(R.string.service_not_ok_body)))
                 .setContentTitle(getString(R.string.service_ok_title))

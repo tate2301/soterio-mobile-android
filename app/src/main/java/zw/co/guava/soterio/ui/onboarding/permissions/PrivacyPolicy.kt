@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_verify_personal_details.*
 import zw.co.guava.soterio.R
+import zw.co.guava.soterio.Soterio
+import zw.co.guava.soterio.sync.ServerSync
 
 class PrivacyPolicy : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

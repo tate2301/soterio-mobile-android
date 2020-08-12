@@ -7,21 +7,16 @@ import android.os.Bundle
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_exposure_notifications.*
 import kotlinx.android.synthetic.main.activity_landing_page.*
 import com.livinglifetechway.quickpermissions_kotlin.runWithPermissions
-import kotlinx.android.synthetic.main.fragment_home.*
 import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsRequest
 import com.livinglifetechway.quickpermissions_kotlin.util.QuickPermissionsOptions
 import zw.co.guava.soterio.R
+import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.services.ForegroundService
 import zw.co.guava.soterio.ui.main.feed.FeedFragment
 import zw.co.guava.soterio.ui.main.home.HomeFragment
-import zw.co.guava.soterio.ui.main.services.ExposureNotifications
 import zw.co.guava.soterio.ui.onboarding.Onboarding
-import zw.co.guava.soterio.ui.onboarding.auth.GetOtp
-import zw.co.guava.soterio.ui.onboarding.permissions.EnableBluetooth
-import zw.co.guava.soterio.ui.onboarding.permissions.GetStarted
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
+
         val homeFragment = HomeFragment()
         val feedFragment = FeedFragment()
 
@@ -43,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             commit()
         }
 
+        /*
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.home -> {
@@ -65,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
+        */
 
     }
 
@@ -78,6 +75,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         } else {
+            val thread = object: Thread() {
+                override fun run() {
+                    super.run()
+                    Soterio.serverSync!!.getHospitalsFromServer()
+                    Soterio.serverSync!!.getTestingCentresFromServer()
+                }
+            }
+            thread.start()
+
             checkForPermissionsAndStartServices()
         }
     }

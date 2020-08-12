@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/exposureNotificationsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent">
+
+                <RelativeLayout
+                    android:id="@+id/counterContainer"
+                    android:layout_centerVertical="true"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/circular_shape">
+                    <TextView
+                        android:id="@+id/exposureNotificationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"/>
+                </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/counterContainer"
+                android:text="Exposure notifications"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:textSize="16sp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                app:icon="@drawable/ic_round_arrow_forward_24"
+                app:iconTint="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                app:iconPadding="0dp"
+                android:paddingHorizontal="8dp"
+                app:iconGravity="start"
+                android:layout_alignParentEnd="true"/>
+
+
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

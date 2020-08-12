@@ -4,16 +4,26 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import zw.co.guava.soterio.db.dao.DaoEncounter
-import zw.co.guava.soterio.db.dao.DaoTokens
-import zw.co.guava.soterio.db.entity.EntityEncounter
-import zw.co.guava.soterio.db.entity.EntityToken
+import zw.co.guava.soterio.db.dao.*
+import zw.co.guava.soterio.db.dao.DaoCase
+import zw.co.guava.soterio.db.entity.*
 
-@Database(entities = [EntityToken::class, EntityEncounter::class], version = 2, exportSchema = true)
+@Database(entities = [
+    EntityToken::class,
+    EntityEncounter::class,
+    EntityHospital::class,
+    EntityTestingCentre::class,
+    EntityCase::class,
+    EntityFeed::class],
+
+    version = 7, exportSchema = true)
 abstract class CoreDatabase: RoomDatabase() {
     abstract fun daoTokens(): DaoTokens
     abstract fun daoEncounter(): DaoEncounter
+    abstract fun daoHospitals(): DaoHospitals
+    abstract fun daoTestingCentres(): DaoTestingCentres
+    abstract fun daoCases(): DaoCase
+    abstract fun daoFeed(): DaoFeed
 
     companion object {
         @Volatile

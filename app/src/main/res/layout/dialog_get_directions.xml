@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="24dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="@color/darkText"
+        android:id="@+id/name"
+        android:text="Chinhoyi Provincial Hospital"/>
+    <TextView
+        android:id="@+id/distanceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approximately 12.4km from your location"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="24dp"
+        android:text="Clicking on the button below will take you to a different application that you use for maps"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/getDirectionsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get directions"
+        android:backgroundTint="@color/colorPrimary"
+        android:textAllCaps="false"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
+</LinearLayout>

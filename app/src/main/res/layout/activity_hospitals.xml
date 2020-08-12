@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.services.Hospitals">
+    android:orientation="vertical"
+    tools:context=".ui.main.getinfo.hospitals.HospitalsActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary"
-        android:gravity="top"
-        app:titleTextColor="@color/white"
-        android:elevation="4dp">
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:layout_width="32dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_round_arrow_back_24"
-            android:tint="@color/darkText" />
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Title"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            />
 
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_marginStart="24dp"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hospitals"
-            android:textColor="@color/darkText"
-            android:textSize="24sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hospitals_recycler_view"/>
 
-
-    </androidx.appcompat.widget.Toolbar>
-
-</RelativeLayout>
+</LinearLayout>
