@@ -253,6 +253,9 @@ class VerifyPhone : AppCompatActivity() {
     }
 
     private fun acknowledgeAuthenticationWithServer(currentUser: FirebaseUser?) {
+        indeterminateBar.visibility = View.VISIBLE
+        activeOverlay.visibility = View.VISIBLE
+
         val requestQueue = Volley.newRequestQueue(this)
 
         // Tokens request from server
@@ -302,10 +305,8 @@ class VerifyPhone : AppCompatActivity() {
                     .setMessage(getString(R.string.connection_error))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
-                        super.onBackPressed()
+                        acknowledgeAuthenticationWithServer(currentUser)
                         dialog.dismiss()
-                        finish()
-
                     }
                     .show()
             }){
