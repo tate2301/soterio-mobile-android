@@ -2,12 +2,15 @@ package zw.co.guava.soterio.ui.main.getinfo.hospitals
 
 import android.app.ActionBar
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.button.MaterialButton
@@ -16,6 +19,7 @@ import kotlinx.android.synthetic.main.item_hospitals_list.view.*
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.core.classes.CentralLog
 import zw.co.guava.soterio.db.entity.EntityHospital
+
 
 class HospitalsAdapter internal constructor(
     context: Context
@@ -32,9 +36,6 @@ class HospitalsAdapter internal constructor(
 
     }
 
-    private fun calculateDistanceFromMe(): Int {
-        return 1
-    }
 
     // Gets the number of dates in the list
     override fun getItemCount(): Int {
@@ -50,7 +51,7 @@ class HospitalsAdapter internal constructor(
     // Binds each date in the ArrayList to a view
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         holder.hospitalsTextView.text = hospitals[position].name
-        holder.hospitalsDistanceTextView.text = "${calculateDistanceFromMe()} km"
+        holder.hospitalsDistanceTextView.text = hospitals[position].address
 
         holder.hospitalContainer.setOnClickListener {
                 CentralLog.d("Adapter", "Item Clicked")
@@ -60,9 +61,15 @@ class HospitalsAdapter internal constructor(
                 val view = inflater.inflate(R.layout.dialog_get_directions, null)
 
                 view.findViewById<TextView>(R.id.name).text = hospital.name
-                view.findViewById<TextView>(R.id.distanceText).text = "Approximately ${calculateDistanceFromMe()} km from your location"
+                view.findViewById<TextView>(R.id.distanceText).text = hospital.address
                 view.findViewById<MaterialButton>(R.id.getDirectionsBtn).setOnClickListener {
                     dialog.dismiss()
+                }
+
+                view.findViewById<MaterialButton>(R.id.getDirectionsBtn).setOnClickListener {
+                    val uri = "http://maps.google.com/maps?daddr=" + hospital.latitude.toString() + "," + hospital.longitude.toString()
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                    view.context.startActivity(intent)
                 }
 
                 dialog.window?.setLayout (LinearLayout.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
@@ -78,6 +85,7 @@ class HospitalsAdapter internal constructor(
         this.hospitals = words
         notifyDataSetChanged()
     }
+
 
     internal fun getPosition(): Int {
         return getPosition()

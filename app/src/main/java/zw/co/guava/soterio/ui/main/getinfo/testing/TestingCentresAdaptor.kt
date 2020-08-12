@@ -2,6 +2,8 @@ package zw.co.guava.soterio.ui.main.getinfo.testing
 
 import android.app.ActionBar
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -51,7 +53,7 @@ class TestingCentresAdapter internal constructor(
     // Binds each date in the ArrayList to a view
     override fun onBindViewHolder(holder: TestingCentreViewHolder, position: Int) {
         holder.testingCentresTextView.text = testingCentres[position].name
-        holder.testingCentresDistanceTextView.text = "${calculateDistanceFromMe()} km"
+        holder.testingCentresDistanceTextView.text = testingCentres[position].address
 
         holder.testingCentreContainer.setOnClickListener {
                 CentralLog.d("Adapter", "Item Clicked")
@@ -61,9 +63,18 @@ class TestingCentresAdapter internal constructor(
                 val view = inflater.inflate(R.layout.dialog_get_directions, null)
 
                 view.findViewById<TextView>(R.id.name).text = testingCentre.name
-                view.findViewById<TextView>(R.id.distanceText).text = "Approximately ${calculateDistanceFromMe()} km from your location"
+                view.findViewById<TextView>(R.id.distanceText).text = testingCentre.address
                 view.findViewById<MaterialButton>(R.id.getDirectionsBtn).setOnClickListener {
                     dialog.dismiss()
+                }
+
+                view.findViewById<MaterialButton>(R.id.getDirectionsBtn).setOnClickListener {
+                    val navigationIntentUri: Uri =
+                        Uri.parse("google.navigation:q=" + testingCentre.latitude + "," + testingCentre.longitude) //creating intent with latlng
+
+                    val mapIntent = Intent(Intent.ACTION_VIEW, navigationIntentUri)
+                    mapIntent.setPackage("com.google.android.apps.maps")
+                    view.context.startActivity(mapIntent)
                 }
 
                 dialog.window?.setLayout (LinearLayout.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
