@@ -1,4 +1,4 @@
-package zw.co.guava.soterio.ui.main.getinfo
+package zw.co.guava.soterio.ui.main.getinfo.hospitals
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -18,7 +18,9 @@ class DateAdaptor(private val items: ArrayList<String>, private val items2: Arra
 
     // Inflates the item views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_hospitals_list, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_hospitals_list, parent, false)
+        )
     }
 
     // Binds each date in the ArrayList to a view
