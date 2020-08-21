@@ -7,6 +7,14 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(kotlin_version)
+            storePassword kotlin_version
+            keyAlias kotlin_version
+            keyPassword kotlin_version
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
