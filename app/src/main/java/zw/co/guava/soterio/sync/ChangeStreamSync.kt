@@ -1,11 +1,15 @@
 package zw.co.guava.soterio.sync
 
 import com.github.nkzawa.emitter.Emitter
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONException
 import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.core.classes.CentralLog
 import zw.co.guava.soterio.db.entity.EntityCase
+import zw.co.guava.soterio.db.entity.EntityEncounter
 import zw.co.guava.soterio.db.entity.EntityFeed
 import zw.co.guava.soterio.db.repo.RepoCases
 import zw.co.guava.soterio.db.repo.RepoFeeds
@@ -96,5 +100,13 @@ class ChangeStreamSync(var webSocket: com.github.nkzawa.socketio.client.Socket?)
             }
 
         })
+    }
+
+    // To be used only during CUT debug test
+    fun emmitEncounter(encounter: EntityEncounter) {
+        val mAuth = FirebaseAuth.getInstance()
+        val uid = mAuth.uid
+
+        webSocket!!.emit("encounter", "{ uid: ${uid}}, encounter: ${Gson().toJson(encounter)}")
     }
 }

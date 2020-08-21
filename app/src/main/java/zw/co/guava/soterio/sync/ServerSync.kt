@@ -99,9 +99,5 @@ class ServerSync(val context: Context) {
 
     }
 
-    // To be used only during debug test
-    fun emmitEncounter() {
-
-    }
 
 }

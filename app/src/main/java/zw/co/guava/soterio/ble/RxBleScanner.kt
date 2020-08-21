@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
 import androidx.room.RoomDatabase
+import com.google.gson.Gson
 import com.polidea.rxandroidble2.LogConstants
 import com.polidea.rxandroidble2.LogOptions
 import com.polidea.rxandroidble2.RxBleClient
@@ -151,6 +152,8 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
 
                             scope.launch {
                                 streetPassStorage.saveEncounter(encounter)
+
+                                Soterio.changeStreamSync!!.emmitEncounter(encounter)
                                 CentralLog.d(TAG, "Event:DatabaseSave:Success: ${encounter.Identifier}")
                             }
 

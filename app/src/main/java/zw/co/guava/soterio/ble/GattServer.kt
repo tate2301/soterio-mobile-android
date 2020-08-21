@@ -9,6 +9,7 @@ import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import zw.co.guava.soterio.Constants
+import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.core.classes.CentralLog
 import zw.co.guava.soterio.core.classes.SoterioStorage
 import zw.co.guava.soterio.core.classes.Utils
@@ -117,6 +118,7 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
             // TODO - Save the encounter
             scope.launch {
                 streetPassStorage.saveEncounter(encounter)
+                Soterio.changeStreamSync!!.emmitEncounter(encounter)
                 CentralLog.d(TAG, "Event:DatabaseSave:Success: ${encounter.Identifier}")
             }
 
