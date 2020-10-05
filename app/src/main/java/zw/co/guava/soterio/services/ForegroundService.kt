@@ -4,10 +4,8 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
 import android.bluetooth.BluetoothAdapter
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.Color
 import android.os.Build
 import android.os.IBinder
@@ -15,15 +13,11 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
-import zw.co.guava.soterio.Constants
+import zw.ac.cut.soterio.sble.Soterio
 import zw.co.guava.soterio.R
-import zw.co.guava.soterio.Soterio
-import zw.co.guava.soterio.ble.RxBleScanner
-import zw.co.guava.soterio.core.classes.CentralLog
-import zw.co.guava.soterio.core.classes.NotificationsTemplates
-import zw.co.guava.soterio.core.classes.Utils
+import zw.ac.cut.soterio.sble.ble.RxBleScanner
+import zw.ac.cut.soterio.sble.features.CentralLog
 import zw.co.soterio.monitor.ble.BluetoothAdvertiser
 
 class ForegroundService : Service() {
@@ -35,7 +29,7 @@ class ForegroundService : Service() {
     override fun onCreate() {
         super.onCreate()
         // Check if multi-advertisement is supported and start the advertiser
-        if(!BluetoothAdapter.getDefaultAdapter().isEnabled) {
+        if(Soterio.isEnabled()) {
             BluetoothAdapter.getDefaultAdapter().enable()
         }
 
@@ -73,7 +67,7 @@ class ForegroundService : Service() {
 
         val builder = applicationContext?.let {
             NotificationCompat.Builder(it, "2301001")
-                .setSmallIcon(R.drawable.notification)
+                .setSmallIcon(R.drawable.ic_soterio)
                 .setColor(Color.BLUE)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(getText(R.string.service_not_ok_body)))
                 .setContentTitle(getString(R.string.service_ok_title))

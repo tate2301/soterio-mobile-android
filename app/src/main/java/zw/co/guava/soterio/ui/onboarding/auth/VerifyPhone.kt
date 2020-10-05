@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.activity_verify_phone.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.json.JSONObject
+import zw.ac.cut.soterio.sble.features.CentralLog
 import zw.co.guava.soterio.R
 import zw.co.guava.soterio.db.CoreDatabase
 import zw.co.guava.soterio.db.entity.EntityToken
@@ -253,13 +254,16 @@ class VerifyPhone : AppCompatActivity() {
     }
 
     private fun acknowledgeAuthenticationWithServer(currentUser: FirebaseUser?) {
+        indeterminateBar.visibility = View.VISIBLE
+        activeOverlay.visibility = View.VISIBLE
+
         val requestQueue = Volley.newRequestQueue(this)
 
         // Tokens request from server
         val tokensRequest = StringRequest(Request.Method.GET,
             getString(R.string.server_addr) + getString(R.string.route_tokens) + "?uid=${mAuth.currentUser!!.uid}",
-            Response.Listener {
-                Log.d("ServerAccess", "OnTokenFetchSuccess")
+            {
+                CentralLog.d("ServerAccess", "OnTokenFetchSuccess")
 
 
                 // Grab tokens and save them to Database
@@ -277,7 +281,7 @@ class VerifyPhone : AppCompatActivity() {
                 navigateToNextPage()
 
             },
-            Response.ErrorListener {
+            {
                 Log.d("ServerAccess", "OnTokenFetchFailure: ${it.message}")
                 indeterminateBar.visibility = View.GONE
                 activeOverlay.visibility = View.GONE
@@ -289,7 +293,7 @@ class VerifyPhone : AppCompatActivity() {
         val authRequest = object: StringRequest(Request.Method.POST,
             getString(R.string.server_addr) + getString(R.string.route_auth),
             Response.Listener<String> {
-                Log.d("ServerAccess", "OnAuthSuccess: $it")
+                CentralLog.d("ServerAccess", "OnAuthSuccess: $it")
                 requestQueue.add(tokensRequest)
             },
             Response.ErrorListener {
@@ -302,10 +306,8 @@ class VerifyPhone : AppCompatActivity() {
                     .setMessage(getString(R.string.connection_error))
                     .setCancelable(false)
                     .setPositiveButton(getString(R.string.try_again)) { dialog, _ ->
-                        super.onBackPressed()
+                        acknowledgeAuthenticationWithServer(currentUser)
                         dialog.dismiss()
-                        finish()
-
                     }
                     .show()
             }){

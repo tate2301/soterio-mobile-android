@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2C7A7B</color>
-    <color name="colorPrimaryDark">#285E61</color>
+    <color name="colorPrimary">#4259f4</color>
+    <color name="colorPrimaryDark">#0e2bed</color>
     <color name="colorAccent">#DD6B20</color>
+    <color name="colorAccent2">#FEEBC8</color>
     <color name="buttonColor">#ffffff</color>
-    <color name="alert">#E53E3E</color>
+    <color name="alert">#DB4437</color>
     <color name="darkText">#19202c</color>
     <color name="text">#4A5568</color>
     <color name="dotBaseColor">#E2E8F0</color>
@@ -12,6 +13,6 @@
     <color name="faint">#718096</color>
     <color name="faint2">#CBD5E0</color>
     <color name="white">#ffffff</color>
-    <color name="danger">#E53E3E</color>
+    <color name="danger">#DB4437</color>
     <color name="light">#A0AEC0</color>
 </resources>
