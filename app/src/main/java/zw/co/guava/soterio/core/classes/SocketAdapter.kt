@@ -7,7 +7,7 @@ import zw.co.guava.soterio.R
 
 class SocketAdapter (val context: Context) {
     private val TAG = "SocketAdapter"
-    private lateinit var opts: IO.Options
+    private var opts: IO.Options
     val webSocket = getSocket()
 
     init {

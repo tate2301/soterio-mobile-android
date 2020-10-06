@@ -63,7 +63,7 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
         CentralLog.d("RxBle", "Starting Scan")
         val logOptions = LogOptions.Builder()
             .setLogLevel(LogConstants.VERBOSE)
-            .setLogger { level, tag, msg -> CentralLog.d(tag, msg) }
+            .setLogger { _, tag, msg -> CentralLog.d(tag, msg) }
             .build()
 
         RxBleClient.updateLogOptions(logOptions)
@@ -91,7 +91,7 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
 
                 devices.distinctBy { it.first.bleDevice }.map {
                     CentralLog.d(TAG,"scan - Connecting to $it")
-                    connectToDevice(it.first, it.second, scope)
+                    connectToDevice(it.first, it.second)
                 }
 
                 connections.map { it?.dispose() }
@@ -121,7 +121,7 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
     }
 
     @SuppressLint("CheckResult")
-    private fun connectToDevice(scanResult: ScanResult, txPowerAdvertised: Int, coroutineScope: CoroutineScope) {
+    private fun connectToDevice(scanResult: ScanResult, txPowerAdvertised: Int) {
         val macAddress = scanResult.bleDevice.macAddress
         Log.d("RxBle", "Found $macAddress mmeta ${scanResult.scanRecord.serviceData}")
         CentralLog.d(TAG,"Connecting to $macAddress")
@@ -185,7 +185,6 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
                 )
         }
 
-
     }
 
     private fun negotiateMTU(connection: RxBleConnection): Single<RxBleConnection> {
@@ -248,43 +247,10 @@ class RxBleScanner(val context: Context, private val scope: CoroutineScope) {
         return event
     }
     */
+
     private fun onConnectionError(e: Throwable) {
         CentralLog.d(TAG,"Connection failed with: $e")
     }
-
-    private fun storeEvent(event: Event) {
-        CentralLog.d(TAG,"Event ${String(event.identifier)}: $event")
-        createOrUpdateContactEvent(
-            event.identifier,
-            event.txPower,
-            event.timestamp,
-            event.txPower
-        )
-    }
-
-    private fun createOrUpdateContactEvent(identifier: ByteArray, rssi: Int, timestamp: Long, txPower: Int) {
-        val deviceIdentifier = String(identifier)
-        CentralLog.d(TAG, "readSuccess: ${deviceIdentifier}")
-
-    }
-
-    private fun saveEncounter(encounter: EntityEncounter) {
-        val thread: Thread = object : Thread() {
-            override fun run() {
-
-            }
-        }
-        thread.start()
-    }
-
-    @Suppress("ArrayInDataClass")
-    private data class Event(
-        val identifier: ByteArray,
-        val rssi: Int,
-        val txPower: Int,
-        val scope: CoroutineScope,
-        val timestamp: Long
-    )
 
 
 }

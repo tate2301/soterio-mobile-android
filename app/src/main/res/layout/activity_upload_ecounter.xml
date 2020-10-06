@@ -7,7 +7,7 @@
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingTop="12dp"
-    tools:context=".ui.main.getinfo.encounters.UploadEcounter">
+    tools:context=".ui.main.getinfo.encounters.UploadEncounters">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -54,6 +54,7 @@
             android:hint="Authorization code">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/authorizationCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />

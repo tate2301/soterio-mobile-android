@@ -14,7 +14,8 @@ import zw.co.guava.soterio.db.entity.*
     EntityHospital::class,
     EntityTestingCentre::class,
     EntityCase::class,
-    EntityFeed::class],
+    EntityFeed::class,
+    EntityExposureKey::class],
 
     version = 7, exportSchema = true)
 abstract class CoreDatabase: RoomDatabase() {
@@ -24,6 +25,7 @@ abstract class CoreDatabase: RoomDatabase() {
     abstract fun daoTestingCentres(): DaoTestingCentres
     abstract fun daoCases(): DaoCase
     abstract fun daoFeed(): DaoFeed
+    abstract fun daoExposureKeys(): DaoExposureKeys
 
     companion object {
         @Volatile

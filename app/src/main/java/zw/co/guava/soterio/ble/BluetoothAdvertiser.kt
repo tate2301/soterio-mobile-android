@@ -48,10 +48,17 @@ class BluetoothAdvertiser (private val context: Context, val scope: CoroutineSco
 
     }
 
-    public fun restartAdvertiser() {
+    fun restartAdvertiser() {
         if(mAdvertising) {
             mBluetoothAdvertise.stopAdvertising(advertiseCallback)
             startAdvertiser()
+        }
+    }
+
+    fun stopAdvertiser() {
+        CentralLog.d(TAG, "Tearing down advertiser")
+        if(mAdvertising) {
+            mBluetoothAdvertise.stopAdvertising(advertiseCallback)
         }
     }
 

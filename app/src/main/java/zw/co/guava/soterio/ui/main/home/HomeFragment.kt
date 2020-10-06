@@ -3,13 +3,15 @@ package zw.co.guava.soterio.ui.main.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ToggleButton
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.switchmaterial.SwitchMaterial
 import zw.co.guava.soterio.R
+import zw.co.guava.soterio.Soterio
 import zw.co.guava.soterio.ui.main.getinfo.exposure.ExposureNotificationsActivity
 import zw.co.guava.soterio.ui.main.getinfo.hospitals.HospitalsActivity
 import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCentersActivity
@@ -17,6 +19,7 @@ import zw.co.guava.soterio.ui.main.getinfo.testing.TestingCentersActivity
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     lateinit var lottieViewSonar: LottieAnimationView;
+    lateinit var toggleContactTracing: SwitchMaterial
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val hospitals = root.findViewById<MaterialCardView>(R.id.hospitalsButton)
         val testingCentresButton  = root.findViewById<MaterialCardView>(R.id.testingCentresButton)
         val exposureNotificationsButton = root.findViewById<MaterialCardView>(R.id.exposureNotificationsButton)
+
+        toggleContactTracing = root.findViewById(R.id.toggleContactTracing)
+        toggleContactTracing.isChecked = context?.let { Soterio.isContactTracingEnabled(it) }!!
+
+        toggleContactTracing.setOnCheckedChangeListener { _, _ ->
+            val localIntent = Intent("zw.co.guava.soterio.CONTACT_TRACING_STATE_CHANGED")
+            Soterio.localBroadcastManager!!.sendBroadcast(localIntent)
+        }
 
         hospitals.setOnClickListener {
             val hospitalIntent = Intent(activity, HospitalsActivity::class.java)

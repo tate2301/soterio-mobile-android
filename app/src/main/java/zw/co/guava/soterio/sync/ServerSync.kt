@@ -57,7 +57,7 @@ class ServerSync(val context: Context) {
         val testingCentreRequest = StringRequest(
             Request.Method.GET,
             context.getString(R.string.server_addr) + "/testingcentres",
-            Response.Listener {
+            {
                 CentralLog.d(TAG, "Event:OnTestingCentresFetchSuccess ${it}")
 
                 val testingCentres: List<EntityTestingCentre> = Gson().fromJson(it, Array<EntityTestingCentre>::class.java).toList()
@@ -67,7 +67,6 @@ class ServerSync(val context: Context) {
                         super.run()
                         val daoTestingCentre = CoreDatabase.getDatabase(context).daoTestingCentres()
 
-                        CentralLog.d(TAG, "Event: ${testingCentres[0].address}")
                         RepoTestingCentres(daoTestingCentre).saveAllTestingCentres(testingCentres)
                     }
                 }
@@ -75,7 +74,7 @@ class ServerSync(val context: Context) {
                 thread.start()
 
             },
-            Response.ErrorListener {
+            {
                 CentralLog.d(TAG, "Event:Failed to get testing centres because ${it.message}")
             }
         )

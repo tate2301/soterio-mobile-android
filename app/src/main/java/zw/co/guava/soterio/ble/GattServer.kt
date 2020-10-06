@@ -57,9 +57,7 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
             when (newState) {
                 BluetoothProfile.STATE_CONNECTED -> {
                     CentralLog.i(TAG, "${device.address} Connected to local GATT server")
-                    device.let {
-                        val b = mBluetoothManager.getConnectedDevices(BluetoothProfile.GATT).contains(device)
-                    }
+
                 }
 
                 BluetoothProfile.STATE_DISCONNECTED -> {
@@ -109,7 +107,7 @@ class GattServer (private val context: Context, val scope: CoroutineScope) {
             val streetPassStorage = SoterioStorage(context)
 
             val encounter: EntityEncounter = EntityEncounter(
-                Identifier = String(value!!),
+                Identifier = String(value),
                 rssi = 0,
                 txPower = 0,
                 timestamp = System.currentTimeMillis()

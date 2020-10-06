@@ -1,0 +1,41 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+	package
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:3:5-37
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:1-6:12
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:5:5-68
+	android:name
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml:5:22-65
+uses-sdk
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		ADDED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml
+		INJECTED from D:\cutsoterio\mobile-android\sble\src\main\AndroidManifest.xml

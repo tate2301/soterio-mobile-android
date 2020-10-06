@@ -262,7 +262,7 @@ class VerifyPhone : AppCompatActivity() {
         // Tokens request from server
         val tokensRequest = StringRequest(Request.Method.GET,
             getString(R.string.server_addr) + getString(R.string.route_tokens) + "?uid=${mAuth.currentUser!!.uid}",
-            Response.Listener {
+            {
                 CentralLog.d("ServerAccess", "OnTokenFetchSuccess")
 
 
@@ -281,7 +281,7 @@ class VerifyPhone : AppCompatActivity() {
                 navigateToNextPage()
 
             },
-            Response.ErrorListener {
+            {
                 Log.d("ServerAccess", "OnTokenFetchFailure: ${it.message}")
                 indeterminateBar.visibility = View.GONE
                 activeOverlay.visibility = View.GONE
